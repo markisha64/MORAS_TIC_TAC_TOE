@@ -122,10 +122,13 @@ def minimax(a, depth):
         OM[a] = mni
         return mn
 
+def fillOMROT():
+    for i in range(len(OMROT)):
+        OMROT[minRotBoard(intToBoard(i))] = OM[i]  
+
 if __name__ == '__main__':
     minimax(0, 0)
-    for i in range(3**9):
-        print(i, OM[i])
+    fillOMROT()
 
     tint = 180
     board = intToBoard(tint)
@@ -136,13 +139,18 @@ if __name__ == '__main__':
 
     printBoard(intToBoard(tint+ turn * 3 ** OM[0]))
 
-    for i in range(len(OMROT)):
-        OMROT[minRotBoard(intToBoard(i))] = OM[i]
-
     mx = 0
     for index, value in enumerate(OMROT):
         if value != -1:
             mx = max(index, mx)
 
     print(mx)
+    print(OMROT[0:mx + 1])
+
+    mx2 = 0
+    for index, value in enumerate(OMROT):
+        if value != -1 and index < mx:
+            mx2 = max(index, mx2)
+
+    print(mx2)
         

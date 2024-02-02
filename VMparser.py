@@ -82,7 +82,7 @@ class Parser:
                 Parser._error("Parser", n, "Undefined command");
                 return ""
         
-        elif len(l) > 1 or l[0] == "return":
+        elif len(l) > 1 or l[0] == "return" or l[0] == "jumptable-end":
             if l[0] == "label" and len(l) == 2:
                 return "//" + " ".join(l) + "\n" + self._label(l[1], n)
             elif l[0] == "goto" and len(l) == 2:
@@ -95,6 +95,8 @@ class Parser:
                 return "//" + " ".join(l) + "\n" + self._call(l[1], l[2], n)
             elif l[0] == "return" and len(l) == 1:
                 return "//" + " ".join(l) + "\n" + self._return(n)
+            elif l[0] == "jumptable-end" and len(l) == 1:
+                return "(JUMPTABLE_END)\n@SP\nM=M+1\nA=M-1\nM=D"
             
 
         elif len(l) == 1:
@@ -124,6 +126,8 @@ class Parser:
             l = "@" + str(5 + int(loc)) + "\nD=M\n"
         elif src == "pointer":
             l = "@" + str(3 + int(loc)) + "\nD=M\n"
+        elif src == "jumptable":
+             return "@" + str(loc) + "\nD=M\n" + "@JUMPTABLE_END\n0;JMP\n"
         else:
             self._flag = False
             Parser._error("Push", n, "Undefined source \"" + src + "\".");
@@ -150,6 +154,8 @@ class Parser:
             l = "@SP\nAM=M-1\nD=M\n@" + str(5 + int(loc)) + "\nM=D"
         elif dst == "pointer":
             l = "@SP\nAM=M-1\nD=M\n@" + str(3 + int(loc)) + "\nM=D"
+        elif dst == "jumptable":
+            l = "@SP\nAM=M-1\nD=M\nD=D+D\nD=D+D\n@JUMPTABLE\nA=A+D\n0; JMP\n(JUMPTABLE)\n"
         else:
             self._flag = False
             Parser._error("Push", n, "Undefined destination \"" + dst + "\".");
