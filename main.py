@@ -28,9 +28,14 @@ def buildPerfect():
         if OMROT[index] != -1:
             mx = max(mx, index)
 
-    final = [0 for _ in range(ceil(mx / 3))]
+    mx1 = 0
+    for index, value in enumerate(OMROT[:mx]):
+        if OMROT[index] != -1:
+            mx1 = max(mx1, index)
 
-    for i in range(mx + 1):
+    final = [0 for _ in range(ceil(mx1 / 3))]
+
+    for i in range(mx1 + 1):
         v = max(OMROT[i], 0)
 
         final[i // 3] += v * 32 ** (i % 3)
@@ -38,6 +43,13 @@ def buildPerfect():
     with open('Perfect.vm', 'w') as f:
         f.write("function Perfect.move 0\n")    
         f.write("push argument 0\n")
+        f.write(f"push constant {mx}\n")
+        f.write("eq\n")
+        f.write("neg\n")
+        f.write("if-goto jt\n")
+        f.write(f"push constant {OMROT[mx]}\n")
+        f.write("return\n")
+        f.write("label jt\n")
         f.write("pop jumptable 0\n")
 
         for x in final:

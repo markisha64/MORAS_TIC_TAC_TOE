@@ -155,7 +155,7 @@ class Parser:
         elif dst == "pointer":
             l = "@SP\nAM=M-1\nD=M\n@" + str(3 + int(loc)) + "\nM=D"
         elif dst == "jumptable":
-            l = "@SP\nAM=M-1\nD=M\nD=D+D\nD=D+D\n@JUMPTABLE\nA=A+D\n0; JMP\n(JUMPTABLE)\n"
+            l = "@SP\nAM=M-1\nD=M\nD=D+M\nD=D+M\nD=D+M\n@JUMPTABLE\nA=A+D\n0; JMP\n(JUMPTABLE)\n"
         else:
             self._flag = False
             Parser._error("Push", n, "Undefined destination \"" + dst + "\".");
