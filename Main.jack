@@ -30,7 +30,11 @@ class Main {
 			let d = idx / 3;
 			let mod = idx - (d * 3); 
 
-			do Main.drawX(d, mod);
+			if (turn = 1) {
+				do Main.drawX(d, mod);
+			} else {
+				do Main.drawO(d, mod);
+			}
 
 			let board[idx] = turn;
 			let turn = 3 - turn;
@@ -57,6 +61,18 @@ class Main {
 	
 		do Screen.drawLine(10 + rm, 10 + cm, 75 + rm, 75 + cm);
 		do Screen.drawLine(75 + rm, 10 + cm, 10 + rm, 75 + cm);
+
+		return;
+	}
+
+	function void drawO(int col, int row) {
+		var int rm;
+		var int cm;
+
+		let rm = row * 85;
+		let cm = col * 85;
+
+		do Screen.drawCircle(42 + rm, 42 + cm, 37);
 
 		return;
 	}
