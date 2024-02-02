@@ -1,0 +1,18 @@
+function Player.getMove 0
+call Player.getMovePlayer 0
+return
+function Player.getMovePlayer 1
+call Keyboard.keyPressed 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 0
+eq
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+return

@@ -1,0 +1,16 @@
+class Player {
+	function int getMove() {
+		return Player.getMovePlayer();
+	}
+
+	function int getMovePlayer() {
+		var int key;
+
+		let key = Keyboard.keyPressed();
+		while (key = 0) {
+			let key = Keyboard.keyPressed();
+		}
+
+		return key;
+	}
+}

@@ -1,10 +1,61 @@
 class Main {
 	function void main() {
-		var int a;
+		var Array board;
+		var int turn;
+		var int key;
+		var int d;
+		var int mod;
+		var int idx;
 
-		let a = Switch.switch(6969);
+		let board = Array.new(9);
 
-		do Output.printInt(a);
+		let turn = 1;
+
+		do Main.drawGrid();
+
+		while (1 = 1) {
+			let key = 50;
+
+			let idx = key - 48; 
+			let d = idx / 9;
+			let mod = idx - (d * 3); 
+
+			do Main.drawX(d, mod);
+			do Main.drawX(0, 0);
+			do Main.drawX(0, 1);
+			do Main.drawX(0, 2);
+			do Main.drawX(1, 0);
+			do Main.drawX(1, 1);
+			do Main.drawX(1, 2);
+			do Main.drawX(2, 0);
+			do Main.drawX(2, 1);
+			do Main.drawX(2, 2);
+
+			let board[idx] = turn;
+			let turn = 3 - turn;
+		}
+
+		return;
+	}
+
+	function void drawGrid() {
+		do ScreenUtil.drawVertical(85, 0, 255);
+		do ScreenUtil.drawVertical(170, 0, 255);
+		do ScreenUtil.drawHorizontal(85, 0, 255);
+		do ScreenUtil.drawHorizontal(170, 0, 255);
+
+		return;
+	}
+
+	function void drawX(int row, int col) {
+		var int rm;
+		var int cm;
+
+		let rm = row * 85;
+		let cm = col * 85;
+	
+		do Screen.drawLine(10 + rm, 10 + cm, 75 + rm, 75 + cm);
+		do Screen.drawLine(75 + rm, 10 + cm, 10 + rm, 75 + cm);
 
 		return;
 	}
