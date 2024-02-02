@@ -6,6 +6,16 @@ class Main {
 		var int d;
 		var int mod;
 		var int idx;
+		var Player p1;
+		var Player p2;
+
+		do Memory.init();
+		do Math.init();
+		do Screen.init();
+		do Keyboard.init();
+
+		let p1 = Player.new(0);
+		let p2 = Player.new(0);
 
 		let board = Array.new(9);
 
@@ -13,23 +23,14 @@ class Main {
 
 		do Main.drawGrid();
 
-		while (1 = 1) {
-			let key = 50;
+		while (true) {
+			let key = p1.getMove(0);
+			let idx = key - 48;
 
-			let idx = key - 48; 
-			let d = idx / 9;
+			let d = idx / 3;
 			let mod = idx - (d * 3); 
 
 			do Main.drawX(d, mod);
-			do Main.drawX(0, 0);
-			do Main.drawX(0, 1);
-			do Main.drawX(0, 2);
-			do Main.drawX(1, 0);
-			do Main.drawX(1, 1);
-			do Main.drawX(1, 2);
-			do Main.drawX(2, 0);
-			do Main.drawX(2, 1);
-			do Main.drawX(2, 2);
 
 			let board[idx] = turn;
 			let turn = 3 - turn;
@@ -47,7 +48,7 @@ class Main {
 		return;
 	}
 
-	function void drawX(int row, int col) {
+	function void drawX(int col, int row) {
 		var int rm;
 		var int cm;
 

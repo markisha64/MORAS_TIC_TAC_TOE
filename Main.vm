@@ -1,4 +1,18 @@
-function Main.main 6
+function Main.main 8
+call Memory.init 0
+pop temp 0
+call Math.init 0
+pop temp 0
+call Screen.init 0
+pop temp 0
+call Keyboard.init 0
+pop temp 0
+push constant 0
+call Player.new 1
+pop local 6
+push constant 0
+call Player.new 1
+pop local 7
 push constant 9
 call Array.new 1
 pop local 0
@@ -7,19 +21,20 @@ pop local 1
 call Main.drawGrid 0
 pop temp 0
 label WHILE_EXP0
-push constant 1
-push constant 1
-eq
+push constant 0
+not
 not
 if-goto WHILE_END0
-push constant 50
+push local 6
+push constant 0
+call Player.getMove 2
 pop local 2
 push local 2
 push constant 48
 sub
 pop local 5
 push local 5
-push constant 9
+push constant 3
 call Math.divide 2
 pop local 3
 push local 5
@@ -30,42 +45,6 @@ sub
 pop local 4
 push local 3
 push local 4
-call Main.drawX 2
-pop temp 0
-push constant 0
-push constant 0
-call Main.drawX 2
-pop temp 0
-push constant 0
-push constant 1
-call Main.drawX 2
-pop temp 0
-push constant 0
-push constant 2
-call Main.drawX 2
-pop temp 0
-push constant 1
-push constant 0
-call Main.drawX 2
-pop temp 0
-push constant 1
-push constant 1
-call Main.drawX 2
-pop temp 0
-push constant 1
-push constant 2
-call Main.drawX 2
-pop temp 0
-push constant 2
-push constant 0
-call Main.drawX 2
-pop temp 0
-push constant 2
-push constant 1
-call Main.drawX 2
-pop temp 0
-push constant 2
-push constant 2
 call Main.drawX 2
 pop temp 0
 push local 5
@@ -108,11 +87,11 @@ pop temp 0
 push constant 0
 return
 function Main.drawX 2
-push argument 0
+push argument 1
 push constant 85
 call Math.multiply 2
 pop local 0
-push argument 1
+push argument 0
 push constant 85
 call Math.multiply 2
 pop local 1

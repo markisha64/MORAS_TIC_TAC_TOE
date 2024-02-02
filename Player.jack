@@ -1,9 +1,59 @@
 class Player {
-	function int getMove() {
-		return Player.getMovePlayer();
+	field int type;
+
+	constructor Player new(int t) {
+		let type = t;
+
+		return this;
 	}
 
-	function int getMovePlayer() {
+	function int getMoveRot(int move) {
+		if (move = 4) {
+			return 4;
+		}
+
+		if (move < 5) {
+			if (move < 2) {
+				if (move < 1) {
+					return 7;
+				}
+
+				return 3;
+			}
+
+			if (move < 4) {
+				if (move < 3) {
+					return 0;
+				}
+
+				return 6;
+			}
+		}
+
+		if (move < 7) {
+			if (move < 6) {
+				return 1;
+			}
+
+			return 8;
+		}
+
+		if (move < 8) {
+			return 5;
+		}
+
+		return 2;
+	}
+	
+	method int getMove(int board) {
+		if (type = 0) {
+			return getMovePlayer();
+		}		
+
+		return getMoveAI(board);
+	}
+
+	method int getMovePlayer() {
 		var int key;
 
 		let key = Keyboard.keyPressed();
@@ -12,5 +62,9 @@ class Player {
 		}
 
 		return key;
+	}
+
+	method int getMoveAI(int board) {
+		return 0;
 	}
 }

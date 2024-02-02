@@ -1,9 +1,9 @@
 
 function Memory.init 0
 	push constant 0
-	pop static 0
+	pop static 10
 	push constant 2048
-	push static 0
+	push static 10
 	add
 	push constant 14334
 	pop temp 0
@@ -11,7 +11,7 @@ function Memory.init 0
 	push temp 0
 	pop that 0
 	push constant 2049
-	push static 0
+	push static 10
 	add
 	push constant 2050
 	pop temp 0
@@ -24,7 +24,7 @@ function Memory.init 0
 
 function Memory.peek 0
 	push argument 0
-	push static 0
+	push static 10
 	add
 	pop pointer 1
 	push that 0
@@ -33,7 +33,7 @@ function Memory.peek 0
 
 function Memory.poke 0
 	push argument 0
-	push static 0
+	push static 10
 	add
 	push argument 1
 	pop temp 0
