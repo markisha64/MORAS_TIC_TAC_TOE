@@ -50,6 +50,7 @@ def buildPerfect():
         f.write(f"push constant {OMROT[mx]}\n")
         f.write("return\n")
         f.write("label jt\n")
+        f.write("push argument 0\n")
         f.write("pop jumptable 0\n")
 
         for x in final:

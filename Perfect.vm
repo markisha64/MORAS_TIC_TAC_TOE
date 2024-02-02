@@ -7,6 +7,7 @@ if-goto jt
 push constant 4
 return
 label jt
+push argument 0
 pop jumptable 0
 push jumptable 32
 push jumptable 0

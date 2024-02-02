@@ -9823,6 +9823,16 @@ A=M
 0;JMP
 //label jt
 (Perfect.move$jt)
+//push argument 0
+@0
+D=A
+@ARG
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
 //pop jumptable 0
 @SP
 AM=M-1
