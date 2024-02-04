@@ -183,12 +183,8 @@ M=D
 ($EP$)
 @$EP$
 0;JMP
-//function Main.main 8
+//function Main.main 7
 (Main.main)
-@SP
-M=M+1
-A=M-1
-M=0
 @SP
 M=M+1
 A=M-1
@@ -468,8 +464,8 @@ M=D
 @Player.new
 0;JMP
 (Player.new$ret8)
-//pop local 6
-@6
+//pop local 5
+@5
 D=A
 @LCL
 D=D+M
@@ -532,8 +528,8 @@ M=D
 @Player.new
 0;JMP
 (Player.new$ret9)
-//pop local 7
-@7
+//pop local 6
+@6
 D=A
 @LCL
 D=D+M
@@ -702,8 +698,8 @@ AM=M-1
 D=M+1
 @Main.main$WHILE_END0
 D;JEQ
-//push local 6
-@6
+//push local 5
+@5
 D=A
 @LCL
 A=D+M
@@ -763,8 +759,8 @@ M=D
 @Player.getMove
 0;JMP
 (Player.getMove$ret12)
-//pop local 2
-@2
+//pop local 4
+@4
 D=A
 @LCL
 D=D+M
@@ -776,8 +772,8 @@ D=M
 @R15
 A=M
 M=D
-//push local 2
-@2
+//push local 4
+@4
 D=A
 @LCL
 A=D+M
@@ -786,34 +782,74 @@ D=M
 M=M+1
 A=M-1
 M=D
-//push constant 48
-@48
+//push local 0
+@0
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//pop pointer 1
+@SP
+AM=M-1
+D=M
+@4
+M=D
+//push that 0
+@0
+D=A
+@THAT
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//push constant 0
+@0
 D=A
 @SP
 M=M+1
 A=M-1
 M=D
-//sub
+//eq
 @SP
 AM=M-1
 D=M
 A=A-1
-M=M-D
-//pop local 5
-@5
-D=A
-@LCL
-D=D+M
-@R15
+D=M-D
+@LAB13
+D;JEQ
+@LAB14
+D=0;JMP
+(LAB13)
+D=-1
+(LAB14)
+@SP
+A=M-1
 M=D
+//if-goto IF_TRUE0
 @SP
 AM=M-1
-D=M
-@R15
-A=M
-M=D
-//push local 5
-@5
+D=M+1
+@Main.main$IF_TRUE0
+D;JEQ
+//goto IF_FALSE0
+@Main.main$IF_FALSE0
+0;JMP
+//label IF_TRUE0
+(Main.main$IF_TRUE0)
+//push local 4
+@4
 D=A
 @LCL
 A=D+M
@@ -830,7 +866,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.divide 2
-@Math.divide$ret13
+@Math.divide$ret15
 D=A
 @SP
 M=M+1
@@ -872,9 +908,9 @@ D=M
 M=D
 @Math.divide
 0;JMP
-(Math.divide$ret13)
-//pop local 3
-@3
+(Math.divide$ret15)
+//pop local 2
+@2
 D=A
 @LCL
 D=D+M
@@ -886,8 +922,8 @@ D=M
 @R15
 A=M
 M=D
-//push local 5
-@5
+//push local 4
+@4
 D=A
 @LCL
 A=D+M
@@ -896,8 +932,8 @@ D=M
 M=M+1
 A=M-1
 M=D
-//push local 3
-@3
+//push local 2
+@2
 D=A
 @LCL
 A=D+M
@@ -914,7 +950,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.multiply 2
-@Math.multiply$ret14
+@Math.multiply$ret16
 D=A
 @SP
 M=M+1
@@ -956,15 +992,15 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret14)
+(Math.multiply$ret16)
 //sub
 @SP
 AM=M-1
 D=M
 A=A-1
 M=M-D
-//pop local 4
-@4
+//pop local 3
+@3
 D=A
 @LCL
 D=D+M
@@ -976,6 +1012,60 @@ D=M
 @R15
 A=M
 M=D
+//push local 1
+@1
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//push constant 1
+@1
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//eq
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+@LAB17
+D;JEQ
+@LAB18
+D=0;JMP
+(LAB17)
+D=-1
+(LAB18)
+@SP
+A=M-1
+M=D
+//if-goto IF_TRUE1
+@SP
+AM=M-1
+D=M+1
+@Main.main$IF_TRUE1
+D;JEQ
+//goto IF_FALSE1
+@Main.main$IF_FALSE1
+0;JMP
+//label IF_TRUE1
+(Main.main$IF_TRUE1)
+//push local 2
+@2
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
 //push local 3
 @3
 D=A
@@ -986,18 +1076,8 @@ D=M
 M=M+1
 A=M-1
 M=D
-//push local 4
-@4
-D=A
-@LCL
-A=D+M
-D=M
-@SP
-M=M+1
-A=M-1
-M=D
 //call Main.drawX 2
-@Main.drawX$ret15
+@Main.drawX$ret19
 D=A
 @SP
 M=M+1
@@ -1039,15 +1119,92 @@ D=M
 M=D
 @Main.drawX
 0;JMP
-(Main.drawX$ret15)
+(Main.drawX$ret19)
 //pop temp 0
 @SP
 AM=M-1
 D=M
 @5
 M=D
-//push local 5
+//goto IF_END1
+@Main.main$IF_END1
+0;JMP
+//label IF_FALSE1
+(Main.main$IF_FALSE1)
+//push local 2
+@2
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 3
+@3
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//call Main.drawO 2
+@Main.drawO$ret20
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+@LCL
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@ARG
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THIS
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THAT
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@7
+D=A
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Main.drawO
+0;JMP
+(Main.drawO$ret20)
+//pop temp 0
+@SP
+AM=M-1
+D=M
 @5
+M=D
+//label IF_END1
+(Main.main$IF_END1)
+//push local 4
+@4
 D=A
 @LCL
 A=D+M
@@ -1150,6 +1307,8 @@ D=M
 @R15
 A=M
 M=D
+//label IF_FALSE0
+(Main.main$IF_FALSE0)
 //goto WHILE_EXP0
 @Main.main$WHILE_EXP0
 0;JMP
@@ -1231,7 +1390,7 @@ M=M+1
 A=M-1
 M=D
 //call ScreenUtil.drawVertical 3
-@ScreenUtil.drawVertical$ret16
+@ScreenUtil.drawVertical$ret21
 D=A
 @SP
 M=M+1
@@ -1273,7 +1432,7 @@ D=M
 M=D
 @ScreenUtil.drawVertical
 0;JMP
-(ScreenUtil.drawVertical$ret16)
+(ScreenUtil.drawVertical$ret21)
 //pop temp 0
 @SP
 AM=M-1
@@ -1302,7 +1461,7 @@ M=M+1
 A=M-1
 M=D
 //call ScreenUtil.drawVertical 3
-@ScreenUtil.drawVertical$ret17
+@ScreenUtil.drawVertical$ret22
 D=A
 @SP
 M=M+1
@@ -1344,7 +1503,7 @@ D=M
 M=D
 @ScreenUtil.drawVertical
 0;JMP
-(ScreenUtil.drawVertical$ret17)
+(ScreenUtil.drawVertical$ret22)
 //pop temp 0
 @SP
 AM=M-1
@@ -1373,7 +1532,7 @@ M=M+1
 A=M-1
 M=D
 //call ScreenUtil.drawHorizontal 3
-@ScreenUtil.drawHorizontal$ret18
+@ScreenUtil.drawHorizontal$ret23
 D=A
 @SP
 M=M+1
@@ -1415,7 +1574,7 @@ D=M
 M=D
 @ScreenUtil.drawHorizontal
 0;JMP
-(ScreenUtil.drawHorizontal$ret18)
+(ScreenUtil.drawHorizontal$ret23)
 //pop temp 0
 @SP
 AM=M-1
@@ -1444,7 +1603,7 @@ M=M+1
 A=M-1
 M=D
 //call ScreenUtil.drawHorizontal 3
-@ScreenUtil.drawHorizontal$ret19
+@ScreenUtil.drawHorizontal$ret24
 D=A
 @SP
 M=M+1
@@ -1486,7 +1645,7 @@ D=M
 M=D
 @ScreenUtil.drawHorizontal
 0;JMP
-(ScreenUtil.drawHorizontal$ret19)
+(ScreenUtil.drawHorizontal$ret24)
 //pop temp 0
 @SP
 AM=M-1
@@ -1573,7 +1732,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.multiply 2
-@Math.multiply$ret20
+@Math.multiply$ret25
 D=A
 @SP
 M=M+1
@@ -1615,7 +1774,7 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret20)
+(Math.multiply$ret25)
 //pop local 0
 @0
 D=A
@@ -1647,7 +1806,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.multiply 2
-@Math.multiply$ret21
+@Math.multiply$ret26
 D=A
 @SP
 M=M+1
@@ -1689,7 +1848,7 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret21)
+(Math.multiply$ret26)
 //pop local 1
 @1
 D=A
@@ -1796,7 +1955,7 @@ D=M
 A=A-1
 M=M+D
 //call Screen.drawLine 4
-@Screen.drawLine$ret22
+@Screen.drawLine$ret27
 D=A
 @SP
 M=M+1
@@ -1838,7 +1997,7 @@ D=M
 M=D
 @Screen.drawLine
 0;JMP
-(Screen.drawLine$ret22)
+(Screen.drawLine$ret27)
 //pop temp 0
 @SP
 AM=M-1
@@ -1938,7 +2097,7 @@ D=M
 A=A-1
 M=M+D
 //call Screen.drawLine 4
-@Screen.drawLine$ret23
+@Screen.drawLine$ret28
 D=A
 @SP
 M=M+1
@@ -1980,7 +2139,693 @@ D=M
 M=D
 @Screen.drawLine
 0;JMP
-(Screen.drawLine$ret23)
+(Screen.drawLine$ret28)
+//pop temp 0
+@SP
+AM=M-1
+D=M
+@5
+M=D
+//push constant 0
+@0
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//return
+@LCL
+D=M
+@R15
+M=D
+@5
+D=A
+@R15
+A=M-D
+D=M
+@R14
+M=D
+@SP
+AM=M-1
+D=M
+@ARG
+A=M
+M=D
+@ARG
+D=M+1
+@SP
+M=D
+@R15
+AM=M-1
+D=M
+@THAT
+M=D
+@R15
+AM=M-1
+D=M
+@THIS
+M=D
+@R15
+AM=M-1
+D=M
+@ARG
+M=D
+@R15
+AM=M-1
+D=M
+@LCL
+M=D
+@R14
+A=M
+0;JMP
+//function Main.drawO 2
+(Main.drawO)
+@SP
+M=M+1
+A=M-1
+M=0
+@SP
+M=M+1
+A=M-1
+M=0
+//push argument 1
+@1
+D=A
+@ARG
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//push constant 85
+@85
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//call Math.multiply 2
+@Math.multiply$ret29
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+@LCL
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@ARG
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THIS
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THAT
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@7
+D=A
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Math.multiply
+0;JMP
+(Math.multiply$ret29)
+//pop local 0
+@0
+D=A
+@LCL
+D=D+M
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+@R15
+A=M
+M=D
+//push argument 0
+@0
+D=A
+@ARG
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//push constant 85
+@85
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//call Math.multiply 2
+@Math.multiply$ret30
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+@LCL
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@ARG
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THIS
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THAT
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@7
+D=A
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Math.multiply
+0;JMP
+(Math.multiply$ret30)
+//pop local 1
+@1
+D=A
+@LCL
+D=D+M
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+@R15
+A=M
+M=D
+//push constant 10
+@10
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 0
+@0
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 10
+@10
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 1
+@1
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 75
+@75
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 1
+@1
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//call Screen.drawHorizontal 3
+@Screen.drawHorizontal$ret31
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+@LCL
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@ARG
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THIS
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THAT
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@8
+D=A
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Screen.drawHorizontal
+0;JMP
+(Screen.drawHorizontal$ret31)
+//pop temp 0
+@SP
+AM=M-1
+D=M
+@5
+M=D
+//push constant 75
+@75
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 0
+@0
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 10
+@10
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 1
+@1
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 75
+@75
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 1
+@1
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//call Screen.drawHorizontal 3
+@Screen.drawHorizontal$ret32
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+@LCL
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@ARG
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THIS
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THAT
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@8
+D=A
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Screen.drawHorizontal
+0;JMP
+(Screen.drawHorizontal$ret32)
+//pop temp 0
+@SP
+AM=M-1
+D=M
+@5
+M=D
+//push constant 10
+@10
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 1
+@1
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 10
+@10
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 0
+@0
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 75
+@75
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 0
+@0
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//call Screen.drawVertical 3
+@Screen.drawVertical$ret33
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+@LCL
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@ARG
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THIS
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THAT
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@8
+D=A
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Screen.drawVertical
+0;JMP
+(Screen.drawVertical$ret33)
+//pop temp 0
+@SP
+AM=M-1
+D=M
+@5
+M=D
+//push constant 75
+@75
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 1
+@1
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 10
+@10
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 0
+@0
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//push constant 75
+@75
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//push local 0
+@0
+D=A
+@LCL
+A=D+M
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+//add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+//call Screen.drawVertical 3
+@Screen.drawVertical$ret34
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+@LCL
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@ARG
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THIS
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@THAT
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
+@8
+D=A
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Screen.drawVertical
+0;JMP
+(Screen.drawVertical$ret34)
 //pop temp 0
 @SP
 AM=M-1
@@ -2064,13 +2909,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB24
+@LAB35
 D;JGT
-@LAB25
+@LAB36
 D=0;JMP
-(LAB24)
+(LAB35)
 D=-1
-(LAB25)
+(LAB36)
 @SP
 A=M-1
 M=D
@@ -2097,7 +2942,7 @@ M=M+1
 A=M-1
 M=D
 //call Sys.error 1
-@Sys.error$ret26
+@Sys.error$ret37
 D=A
 @SP
 M=M+1
@@ -2139,7 +2984,7 @@ D=M
 M=D
 @Sys.error
 0;JMP
-(Sys.error$ret26)
+(Sys.error$ret37)
 //pop temp 0
 @SP
 AM=M-1
@@ -2159,7 +3004,7 @@ M=M+1
 A=M-1
 M=D
 //call Memory.alloc 1
-@Memory.alloc$ret27
+@Memory.alloc$ret38
 D=A
 @SP
 M=M+1
@@ -2201,7 +3046,7 @@ D=M
 M=D
 @Memory.alloc
 0;JMP
-(Memory.alloc$ret27)
+(Memory.alloc$ret38)
 //return
 @LCL
 D=M
@@ -2273,7 +3118,7 @@ M=M+1
 A=M-1
 M=D
 //call Memory.deAlloc 1
-@Memory.deAlloc$ret28
+@Memory.deAlloc$ret39
 D=A
 @SP
 M=M+1
@@ -2315,7 +3160,7 @@ D=M
 M=D
 @Memory.deAlloc
 0;JMP
-(Memory.deAlloc$ret28)
+(Memory.deAlloc$ret39)
 //pop temp 0
 @SP
 AM=M-1
@@ -2418,7 +3263,7 @@ M=M+1
 A=M-1
 M=D
 //call Array.new 1
-@Array.new$ret29
+@Array.new$ret40
 D=A
 @SP
 M=M+1
@@ -2460,7 +3305,7 @@ D=M
 M=D
 @Array.new
 0;JMP
-(Array.new$ret29)
+(Array.new$ret40)
 //pop static 0
 @SP
 AM=M-1
@@ -2551,13 +3396,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB30
+@LAB41
 D;JLT
-@LAB31
+@LAB42
 D=0;JMP
-(LAB30)
+(LAB41)
 D=-1
-(LAB31)
+(LAB42)
 @SP
 A=M-1
 M=D
@@ -2860,13 +3705,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB32
+@LAB43
 D;JLT
-@LAB33
+@LAB44
 D=0;JMP
-(LAB32)
+(LAB43)
 D=-1
-(LAB33)
+(LAB44)
 @SP
 A=M-1
 M=D
@@ -3445,13 +4290,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB34
+@LAB45
 D;JLT
-@LAB35
+@LAB46
 D=0;JMP
-(LAB34)
+(LAB45)
 D=-1
-(LAB35)
+(LAB46)
 @SP
 A=M-1
 M=D
@@ -3478,13 +4323,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB36
+@LAB47
 D;JGT
-@LAB37
+@LAB48
 D=0;JMP
-(LAB36)
+(LAB47)
 D=-1
-(LAB37)
+(LAB48)
 @SP
 A=M-1
 M=D
@@ -3517,13 +4362,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB38
+@LAB49
 D;JLT
-@LAB39
+@LAB50
 D=0;JMP
-(LAB38)
+(LAB49)
 D=-1
-(LAB39)
+(LAB50)
 @SP
 A=M-1
 M=D
@@ -3556,13 +4401,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB40
+@LAB51
 D;JGT
-@LAB41
+@LAB52
 D=0;JMP
-(LAB40)
+(LAB51)
 D=-1
-(LAB41)
+(LAB52)
 @SP
 A=M-1
 M=D
@@ -3591,7 +4436,7 @@ M=M+1
 A=M-1
 M=D
 //call Sys.error 1
-@Sys.error$ret42
+@Sys.error$ret53
 D=A
 @SP
 M=M+1
@@ -3633,7 +4478,7 @@ D=M
 M=D
 @Sys.error
 0;JMP
-(Sys.error$ret42)
+(Sys.error$ret53)
 //pop temp 0
 @SP
 AM=M-1
@@ -3660,7 +4505,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.divide 2
-@Math.divide$ret43
+@Math.divide$ret54
 D=A
 @SP
 M=M+1
@@ -3702,7 +4547,7 @@ D=M
 M=D
 @Math.divide
 0;JMP
-(Math.divide$ret43)
+(Math.divide$ret54)
 //pop local 0
 @0
 D=A
@@ -3744,7 +4589,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.multiply 2
-@Math.multiply$ret44
+@Math.multiply$ret55
 D=A
 @SP
 M=M+1
@@ -3786,7 +4631,7 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret44)
+(Math.multiply$ret55)
 //sub
 @SP
 AM=M-1
@@ -3824,7 +4669,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.multiply 2
-@Math.multiply$ret45
+@Math.multiply$ret56
 D=A
 @SP
 M=M+1
@@ -3866,7 +4711,7 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret45)
+(Math.multiply$ret56)
 //push local 0
 @0
 D=A
@@ -3946,7 +4791,7 @@ M=M+1
 A=M-1
 M=D
 //call Screen.updateLocation 2
-@Screen.updateLocation$ret46
+@Screen.updateLocation$ret57
 D=A
 @SP
 M=M+1
@@ -3988,7 +4833,7 @@ D=M
 M=D
 @Screen.updateLocation
 0;JMP
-(Screen.updateLocation$ret46)
+(Screen.updateLocation$ret57)
 //pop temp 0
 @SP
 AM=M-1
@@ -4091,7 +4936,7 @@ M=M+1
 A=M-1
 M=D
 //call Screen.drawPixel 2
-@Screen.drawPixel$ret47
+@Screen.drawPixel$ret58
 D=A
 @SP
 M=M+1
@@ -4133,7 +4978,7 @@ D=M
 M=D
 @Screen.drawPixel
 0;JMP
-(Screen.drawPixel$ret47)
+(Screen.drawPixel$ret58)
 //pop temp 0
 @SP
 AM=M-1
@@ -4166,7 +5011,7 @@ M=M+1
 A=M-1
 M=D
 //call Screen.drawPixel 2
-@Screen.drawPixel$ret48
+@Screen.drawPixel$ret59
 D=A
 @SP
 M=M+1
@@ -4208,7 +5053,7 @@ D=M
 M=D
 @Screen.drawPixel
 0;JMP
-(Screen.drawPixel$ret48)
+(Screen.drawPixel$ret59)
 //pop temp 0
 @SP
 AM=M-1
@@ -4338,13 +5183,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB49
+@LAB60
 D;JLT
-@LAB50
+@LAB61
 D=0;JMP
-(LAB49)
+(LAB60)
 D=-1
-(LAB50)
+(LAB61)
 @SP
 A=M-1
 M=D
@@ -4371,13 +5216,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB51
+@LAB62
 D;JGT
-@LAB52
+@LAB63
 D=0;JMP
-(LAB51)
+(LAB62)
 D=-1
-(LAB52)
+(LAB63)
 @SP
 A=M-1
 M=D
@@ -4410,13 +5255,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB53
+@LAB64
 D;JLT
-@LAB54
+@LAB65
 D=0;JMP
-(LAB53)
+(LAB64)
 D=-1
-(LAB54)
+(LAB65)
 @SP
 A=M-1
 M=D
@@ -4449,13 +5294,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB55
+@LAB66
 D;JGT
-@LAB56
+@LAB67
 D=0;JMP
-(LAB55)
+(LAB66)
 D=-1
-(LAB56)
+(LAB67)
 @SP
 A=M-1
 M=D
@@ -4484,7 +5329,7 @@ M=M+1
 A=M-1
 M=D
 //call Sys.error 1
-@Sys.error$ret57
+@Sys.error$ret68
 D=A
 @SP
 M=M+1
@@ -4526,7 +5371,7 @@ D=M
 M=D
 @Sys.error
 0;JMP
-(Sys.error$ret57)
+(Sys.error$ret68)
 //pop temp 0
 @SP
 AM=M-1
@@ -4562,7 +5407,7 @@ D=M
 A=A-1
 M=M-D
 //call Math.abs 1
-@Math.abs$ret58
+@Math.abs$ret69
 D=A
 @SP
 M=M+1
@@ -4604,7 +5449,7 @@ D=M
 M=D
 @Math.abs
 0;JMP
-(Math.abs$ret58)
+(Math.abs$ret69)
 //pop local 3
 @3
 D=A
@@ -4645,7 +5490,7 @@ D=M
 A=A-1
 M=M-D
 //call Math.abs 1
-@Math.abs$ret59
+@Math.abs$ret70
 D=A
 @SP
 M=M+1
@@ -4687,7 +5532,7 @@ D=M
 M=D
 @Math.abs
 0;JMP
-(Math.abs$ret59)
+(Math.abs$ret70)
 //pop local 2
 @2
 D=A
@@ -4727,13 +5572,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB60
+@LAB71
 D;JLT
-@LAB61
+@LAB72
 D=0;JMP
-(LAB60)
+(LAB71)
 D=-1
-(LAB61)
+(LAB72)
 @SP
 A=M-1
 M=D
@@ -4786,13 +5631,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB62
+@LAB73
 D;JLT
-@LAB63
+@LAB74
 D=0;JMP
-(LAB62)
+(LAB73)
 D=-1
-(LAB63)
+(LAB74)
 @SP
 A=M-1
 M=D
@@ -4842,13 +5687,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB64
+@LAB75
 D;JLT
-@LAB65
+@LAB76
 D=0;JMP
-(LAB64)
+(LAB75)
 D=-1
-(LAB65)
+(LAB76)
 @SP
 A=M-1
 M=D
@@ -5200,13 +6045,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB66
+@LAB77
 D;JGT
-@LAB67
+@LAB78
 D=0;JMP
-(LAB66)
+(LAB77)
 D=-1
-(LAB67)
+(LAB78)
 @SP
 A=M-1
 M=D
@@ -5323,13 +6168,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB68
+@LAB79
 D;JGT
-@LAB69
+@LAB80
 D=0;JMP
-(LAB68)
+(LAB79)
 D=-1
-(LAB69)
+(LAB80)
 @SP
 A=M-1
 M=D
@@ -5366,7 +6211,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.multiply 2
-@Math.multiply$ret70
+@Math.multiply$ret81
 D=A
 @SP
 M=M+1
@@ -5408,7 +6253,7 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret70)
+(Math.multiply$ret81)
 //push local 3
 @3
 D=A
@@ -5456,7 +6301,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.multiply 2
-@Math.multiply$ret71
+@Math.multiply$ret82
 D=A
 @SP
 M=M+1
@@ -5498,7 +6343,7 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret71)
+(Math.multiply$ret82)
 //pop local 9
 @9
 D=A
@@ -5546,7 +6391,7 @@ D=M
 A=A-1
 M=M-D
 //call Math.multiply 2
-@Math.multiply$ret72
+@Math.multiply$ret83
 D=A
 @SP
 M=M+1
@@ -5588,7 +6433,7 @@ D=M
 M=D
 @Math.multiply
 0;JMP
-(Math.multiply$ret72)
+(Math.multiply$ret83)
 //pop local 10
 @10
 D=A
@@ -5633,7 +6478,7 @@ M=M+1
 A=M-1
 M=D
 //call Screen.drawConditional 3
-@Screen.drawConditional$ret73
+@Screen.drawConditional$ret84
 D=A
 @SP
 M=M+1
@@ -5675,7 +6520,7 @@ D=M
 M=D
 @Screen.drawConditional
 0;JMP
-(Screen.drawConditional$ret73)
+(Screen.drawConditional$ret84)
 //pop temp 0
 @SP
 AM=M-1
@@ -5710,13 +6555,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB74
+@LAB85
 D;JLT
-@LAB75
+@LAB86
 D=0;JMP
-(LAB74)
+(LAB85)
 D=-1
-(LAB75)
+(LAB86)
 @SP
 A=M-1
 M=D
@@ -5753,13 +6598,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB76
+@LAB87
 D;JLT
-@LAB77
+@LAB88
 D=0;JMP
-(LAB76)
+(LAB87)
 D=-1
-(LAB77)
+(LAB88)
 @SP
 A=M-1
 M=D
@@ -6026,7 +6871,7 @@ M=M+1
 A=M-1
 M=D
 //call Screen.drawConditional 3
-@Screen.drawConditional$ret78
+@Screen.drawConditional$ret89
 D=A
 @SP
 M=M+1
@@ -6068,7 +6913,7 @@ D=M
 M=D
 @Screen.drawConditional
 0;JMP
-(Screen.drawConditional$ret78)
+(Screen.drawConditional$ret89)
 //pop temp 0
 @SP
 AM=M-1
@@ -6146,7 +6991,7 @@ M=M+1
 A=M-1
 M=D
 //call Array.new 1
-@Array.new$ret79
+@Array.new$ret90
 D=A
 @SP
 M=M+1
@@ -6188,7 +7033,7 @@ D=M
 M=D
 @Array.new
 0;JMP
-(Array.new$ret79)
+(Array.new$ret90)
 //pop static 1
 @SP
 AM=M-1
@@ -6203,7 +7048,7 @@ M=M+1
 A=M-1
 M=D
 //call Array.new 1
-@Array.new$ret80
+@Array.new$ret91
 D=A
 @SP
 M=M+1
@@ -6245,7 +7090,7 @@ D=M
 M=D
 @Array.new
 0;JMP
-(Array.new$ret80)
+(Array.new$ret91)
 //pop static 0
 @SP
 AM=M-1
@@ -6336,13 +7181,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB81
+@LAB92
 D;JLT
-@LAB82
+@LAB93
 D=0;JMP
-(LAB81)
+(LAB92)
 D=-1
-(LAB82)
+(LAB93)
 @SP
 A=M-1
 M=D
@@ -6639,13 +7484,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB83
+@LAB94
 D;JLT
-@LAB84
+@LAB95
 D=0;JMP
-(LAB83)
+(LAB94)
 D=-1
-(LAB84)
+(LAB95)
 @SP
 A=M-1
 M=D
@@ -6789,13 +7634,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB85
+@LAB96
 D;JLT
-@LAB86
+@LAB97
 D=0;JMP
-(LAB85)
+(LAB96)
 D=-1
-(LAB86)
+(LAB97)
 @SP
 A=M-1
 M=D
@@ -6822,13 +7667,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB87
+@LAB98
 D;JGT
-@LAB88
+@LAB99
 D=0;JMP
-(LAB87)
+(LAB98)
 D=-1
-(LAB88)
+(LAB99)
 @SP
 A=M-1
 M=D
@@ -6861,13 +7706,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB89
+@LAB100
 D;JGT
-@LAB90
+@LAB101
 D=0;JMP
-(LAB89)
+(LAB100)
 D=-1
-(LAB90)
+(LAB101)
 @SP
 A=M-1
 M=D
@@ -6894,13 +7739,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB91
+@LAB102
 D;JLT
-@LAB92
+@LAB103
 D=0;JMP
-(LAB91)
+(LAB102)
 D=-1
-(LAB92)
+(LAB103)
 @SP
 A=M-1
 M=D
@@ -6940,7 +7785,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.abs 1
-@Math.abs$ret93
+@Math.abs$ret104
 D=A
 @SP
 M=M+1
@@ -6982,7 +7827,7 @@ D=M
 M=D
 @Math.abs
 0;JMP
-(Math.abs$ret93)
+(Math.abs$ret104)
 //pop argument 0
 @0
 D=A
@@ -7007,7 +7852,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.abs 1
-@Math.abs$ret94
+@Math.abs$ret105
 D=A
 @SP
 M=M+1
@@ -7049,7 +7894,7 @@ D=M
 M=D
 @Math.abs
 0;JMP
-(Math.abs$ret94)
+(Math.abs$ret105)
 //pop argument 1
 @1
 D=A
@@ -7089,13 +7934,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB95
+@LAB106
 D;JLT
-@LAB96
+@LAB107
 D=0;JMP
-(LAB95)
+(LAB106)
 D=-1
-(LAB96)
+(LAB107)
 @SP
 A=M-1
 M=D
@@ -7235,13 +8080,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB97
+@LAB108
 D;JLT
-@LAB98
+@LAB109
 D=0;JMP
-(LAB97)
+(LAB108)
 D=-1
-(LAB98)
+(LAB109)
 @SP
 A=M-1
 M=D
@@ -7323,13 +8168,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB99
+@LAB110
 D;JEQ
-@LAB100
+@LAB111
 D=0;JMP
-(LAB99)
+(LAB110)
 D=-1
-(LAB100)
+(LAB111)
 @SP
 A=M-1
 M=D
@@ -7683,13 +8528,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB101
+@LAB112
 D;JEQ
-@LAB102
+@LAB113
 D=0;JMP
-(LAB101)
+(LAB112)
 D=-1
-(LAB102)
+(LAB113)
 @SP
 A=M-1
 M=D
@@ -7712,7 +8557,7 @@ M=M+1
 A=M-1
 M=D
 //call Sys.error 1
-@Sys.error$ret103
+@Sys.error$ret114
 D=A
 @SP
 M=M+1
@@ -7754,7 +8599,7 @@ D=M
 M=D
 @Sys.error
 0;JMP
-(Sys.error$ret103)
+(Sys.error$ret114)
 //pop temp 0
 @SP
 AM=M-1
@@ -7786,13 +8631,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB104
+@LAB115
 D;JLT
-@LAB105
+@LAB116
 D=0;JMP
-(LAB104)
+(LAB115)
 D=-1
-(LAB105)
+(LAB116)
 @SP
 A=M-1
 M=D
@@ -7819,13 +8664,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB106
+@LAB117
 D;JGT
-@LAB107
+@LAB118
 D=0;JMP
-(LAB106)
+(LAB117)
 D=-1
-(LAB107)
+(LAB118)
 @SP
 A=M-1
 M=D
@@ -7858,13 +8703,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB108
+@LAB119
 D;JGT
-@LAB109
+@LAB120
 D=0;JMP
-(LAB108)
+(LAB119)
 D=-1
-(LAB109)
+(LAB120)
 @SP
 A=M-1
 M=D
@@ -7891,13 +8736,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB110
+@LAB121
 D;JLT
-@LAB111
+@LAB122
 D=0;JMP
-(LAB110)
+(LAB121)
 D=-1
-(LAB111)
+(LAB122)
 @SP
 A=M-1
 M=D
@@ -7957,7 +8802,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.abs 1
-@Math.abs$ret112
+@Math.abs$ret123
 D=A
 @SP
 M=M+1
@@ -7999,7 +8844,7 @@ D=M
 M=D
 @Math.abs
 0;JMP
-(Math.abs$ret112)
+(Math.abs$ret123)
 //pop temp 0
 @SP
 AM=M-1
@@ -8043,7 +8888,7 @@ M=M+1
 A=M-1
 M=D
 //call Math.abs 1
-@Math.abs$ret113
+@Math.abs$ret124
 D=A
 @SP
 M=M+1
@@ -8085,7 +8930,7 @@ D=M
 M=D
 @Math.abs
 0;JMP
-(Math.abs$ret113)
+(Math.abs$ret124)
 //pop argument 0
 @0
 D=A
@@ -8124,13 +8969,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB114
+@LAB125
 D;JLT
-@LAB115
+@LAB126
 D=0;JMP
-(LAB114)
+(LAB125)
 D=-1
-(LAB115)
+(LAB126)
 @SP
 A=M-1
 M=D
@@ -8287,13 +9132,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB116
+@LAB127
 D;JLT
-@LAB117
+@LAB128
 D=0;JMP
-(LAB116)
+(LAB127)
 D=-1
-(LAB117)
+(LAB128)
 @SP
 A=M-1
 M=D
@@ -8581,13 +9426,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB118
+@LAB129
 D;JGT
-@LAB119
+@LAB130
 D=0;JMP
-(LAB118)
+(LAB129)
 D=-1
-(LAB119)
+(LAB130)
 @SP
 A=M-1
 M=D
@@ -8703,13 +9548,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB120
+@LAB131
 D;JGT
-@LAB121
+@LAB132
 D=0;JMP
-(LAB120)
+(LAB131)
 D=-1
-(LAB121)
+(LAB132)
 @SP
 A=M-1
 M=D
@@ -8804,13 +9649,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB122
+@LAB133
 D;JGT
-@LAB123
+@LAB134
 D=0;JMP
-(LAB122)
+(LAB133)
 D=-1
-(LAB123)
+(LAB134)
 @SP
 A=M-1
 M=D
@@ -9141,13 +9986,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB124
+@LAB135
 D;JGT
-@LAB125
+@LAB136
 D=0;JMP
-(LAB124)
+(LAB135)
 D=-1
-(LAB125)
+(LAB136)
 @SP
 A=M-1
 M=D
@@ -9270,13 +10115,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB126
+@LAB137
 D;JLT
-@LAB127
+@LAB138
 D=0;JMP
-(LAB126)
+(LAB137)
 D=-1
-(LAB127)
+(LAB138)
 @SP
 A=M-1
 M=D
@@ -9790,13 +10635,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB128
+@LAB139
 D;JLT
-@LAB129
+@LAB140
 D=0;JMP
-(LAB128)
+(LAB139)
 D=-1
-(LAB129)
+(LAB140)
 @SP
 A=M-1
 M=D
@@ -9819,7 +10664,7 @@ M=M+1
 A=M-1
 M=D
 //call Sys.error 1
-@Sys.error$ret130
+@Sys.error$ret141
 D=A
 @SP
 M=M+1
@@ -9861,7 +10706,7 @@ D=M
 M=D
 @Sys.error
 0;JMP
-(Sys.error$ret130)
+(Sys.error$ret141)
 //pop temp 0
 @SP
 AM=M-1
@@ -9947,13 +10792,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB131
+@LAB142
 D;JLT
-@LAB132
+@LAB143
 D=0;JMP
-(LAB131)
+(LAB142)
 D=-1
-(LAB132)
+(LAB143)
 @SP
 A=M-1
 M=D
@@ -10063,13 +10908,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB133
+@LAB144
 D;JGT
-@LAB134
+@LAB145
 D=0;JMP
-(LAB133)
+(LAB144)
 D=-1
-(LAB134)
+(LAB145)
 @SP
 A=M-1
 M=D
@@ -10092,7 +10937,7 @@ M=M+1
 A=M-1
 M=D
 //call Sys.error 1
-@Sys.error$ret135
+@Sys.error$ret146
 D=A
 @SP
 M=M+1
@@ -10134,7 +10979,7 @@ D=M
 M=D
 @Sys.error
 0;JMP
-(Sys.error$ret135)
+(Sys.error$ret146)
 //pop temp 0
 @SP
 AM=M-1
@@ -10211,13 +11056,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB136
+@LAB147
 D;JGT
-@LAB137
+@LAB148
 D=0;JMP
-(LAB136)
+(LAB147)
 D=-1
-(LAB137)
+(LAB148)
 @SP
 A=M-1
 M=D
@@ -10439,13 +11284,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB138
+@LAB149
 D;JEQ
-@LAB139
+@LAB150
 D=0;JMP
-(LAB138)
+(LAB149)
 D=-1
-(LAB139)
+(LAB150)
 @SP
 A=M-1
 M=D
@@ -11063,13 +11908,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB140
+@LAB151
 D;JEQ
-@LAB141
+@LAB152
 D=0;JMP
-(LAB140)
+(LAB151)
 D=-1
-(LAB141)
+(LAB152)
 @SP
 A=M-1
 M=D
@@ -11435,13 +12280,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB142
+@LAB153
 D;JEQ
-@LAB143
+@LAB154
 D=0;JMP
-(LAB142)
+(LAB153)
 D=-1
-(LAB143)
+(LAB154)
 @SP
 A=M-1
 M=D
@@ -11753,7 +12598,7 @@ M=M+1
 A=M-1
 M=D
 //call Memory.peek 1
-@Memory.peek$ret144
+@Memory.peek$ret155
 D=A
 @SP
 M=M+1
@@ -11795,7 +12640,7 @@ D=M
 M=D
 @Memory.peek
 0;JMP
-(Memory.peek$ret144)
+(Memory.peek$ret155)
 //return
 @LCL
 D=M
@@ -11866,13 +12711,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB145
+@LAB156
 D;JEQ
-@LAB146
+@LAB157
 D=0;JMP
-(LAB145)
+(LAB156)
 D=-1
-(LAB146)
+(LAB157)
 @SP
 A=M-1
 M=D
@@ -37552,7 +38397,7 @@ M=M+1
 A=M-1
 M=D
 //call Memory.alloc 1
-@Memory.alloc$ret147
+@Memory.alloc$ret158
 D=A
 @SP
 M=M+1
@@ -37594,7 +38439,7 @@ D=M
 M=D
 @Memory.alloc
 0;JMP
-(Memory.alloc$ret147)
+(Memory.alloc$ret158)
 //pop pointer 0
 @SP
 AM=M-1
@@ -37701,13 +38546,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB148
+@LAB159
 D;JEQ
-@LAB149
+@LAB160
 D=0;JMP
-(LAB148)
+(LAB159)
 D=-1
-(LAB149)
+(LAB160)
 @SP
 A=M-1
 M=D
@@ -37799,13 +38644,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB150
+@LAB161
 D;JLT
-@LAB151
+@LAB162
 D=0;JMP
-(LAB150)
+(LAB161)
 D=-1
-(LAB151)
+(LAB162)
 @SP
 A=M-1
 M=D
@@ -37843,13 +38688,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB152
+@LAB163
 D;JLT
-@LAB153
+@LAB164
 D=0;JMP
-(LAB152)
+(LAB163)
 D=-1
-(LAB153)
+(LAB164)
 @SP
 A=M-1
 M=D
@@ -37887,13 +38732,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB154
+@LAB165
 D;JLT
-@LAB155
+@LAB166
 D=0;JMP
-(LAB154)
+(LAB165)
 D=-1
-(LAB155)
+(LAB166)
 @SP
 A=M-1
 M=D
@@ -38039,13 +38884,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB156
+@LAB167
 D;JLT
-@LAB157
+@LAB168
 D=0;JMP
-(LAB156)
+(LAB167)
 D=-1
-(LAB157)
+(LAB168)
 @SP
 A=M-1
 M=D
@@ -38083,13 +38928,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB158
+@LAB169
 D;JLT
-@LAB159
+@LAB170
 D=0;JMP
-(LAB158)
+(LAB169)
 D=-1
-(LAB159)
+(LAB170)
 @SP
 A=M-1
 M=D
@@ -38237,13 +39082,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB160
+@LAB171
 D;JLT
-@LAB161
+@LAB172
 D=0;JMP
-(LAB160)
+(LAB171)
 D=-1
-(LAB161)
+(LAB172)
 @SP
 A=M-1
 M=D
@@ -38281,13 +39126,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB162
+@LAB173
 D;JLT
-@LAB163
+@LAB174
 D=0;JMP
-(LAB162)
+(LAB173)
 D=-1
-(LAB163)
+(LAB174)
 @SP
 A=M-1
 M=D
@@ -38433,13 +39278,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB164
+@LAB175
 D;JLT
-@LAB165
+@LAB176
 D=0;JMP
-(LAB164)
+(LAB175)
 D=-1
-(LAB165)
+(LAB176)
 @SP
 A=M-1
 M=D
@@ -38601,13 +39446,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB166
+@LAB177
 D;JEQ
-@LAB167
+@LAB178
 D=0;JMP
-(LAB166)
+(LAB177)
 D=-1
-(LAB167)
+(LAB178)
 @SP
 A=M-1
 M=D
@@ -38630,7 +39475,7 @@ M=M+1
 A=M-1
 M=D
 //call Player.getMovePlayer 1
-@Player.getMovePlayer$ret168
+@Player.getMovePlayer$ret179
 D=A
 @SP
 M=M+1
@@ -38672,7 +39517,7 @@ D=M
 M=D
 @Player.getMovePlayer
 0;JMP
-(Player.getMovePlayer$ret168)
+(Player.getMovePlayer$ret179)
 //return
 @LCL
 D=M
@@ -38738,7 +39583,7 @@ M=M+1
 A=M-1
 M=D
 //call Player.getMoveAI 2
-@Player.getMoveAI$ret169
+@Player.getMoveAI$ret180
 D=A
 @SP
 M=M+1
@@ -38780,7 +39625,7 @@ D=M
 M=D
 @Player.getMoveAI
 0;JMP
-(Player.getMoveAI$ret169)
+(Player.getMoveAI$ret180)
 //return
 @LCL
 D=M
@@ -38849,7 +39694,7 @@ D=M
 @3
 M=D
 //call Keyboard.keyPressed 0
-@Keyboard.keyPressed$ret170
+@Keyboard.keyPressed$ret181
 D=A
 @SP
 M=M+1
@@ -38891,7 +39736,7 @@ D=M
 M=D
 @Keyboard.keyPressed
 0;JMP
-(Keyboard.keyPressed$ret170)
+(Keyboard.keyPressed$ret181)
 //pop local 0
 @0
 D=A
@@ -38930,13 +39775,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB171
+@LAB182
 D;JEQ
-@LAB172
+@LAB183
 D=0;JMP
-(LAB171)
+(LAB182)
 D=-1
-(LAB172)
+(LAB183)
 @SP
 A=M-1
 M=D
@@ -38951,7 +39796,7 @@ D=M+1
 @Player.getMovePlayer$WHILE_END0
 D;JEQ
 //call Keyboard.keyPressed 0
-@Keyboard.keyPressed$ret173
+@Keyboard.keyPressed$ret184
 D=A
 @SP
 M=M+1
@@ -38993,7 +39838,7 @@ D=M
 M=D
 @Keyboard.keyPressed
 0;JMP
-(Keyboard.keyPressed$ret173)
+(Keyboard.keyPressed$ret184)
 //pop local 0
 @0
 D=A
@@ -39022,6 +39867,19 @@ D=M
 M=M+1
 A=M-1
 M=D
+//push constant 48
+@48
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+//sub
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M-D
 //return
 @LCL
 D=M
@@ -39194,13 +40052,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB174
+@LAB185
 D;JLT
-@LAB175
+@LAB186
 D=0;JMP
-(LAB174)
+(LAB185)
 D=-1
-(LAB175)
+(LAB186)
 @SP
 A=M-1
 M=D
@@ -39235,7 +40093,7 @@ M=M+1
 A=M-1
 M=D
 //call Screen.drawPixel 2
-@Screen.drawPixel$ret176
+@Screen.drawPixel$ret187
 D=A
 @SP
 M=M+1
@@ -39277,7 +40135,7 @@ D=M
 M=D
 @Screen.drawPixel
 0;JMP
-(Screen.drawPixel$ret176)
+(Screen.drawPixel$ret187)
 //pop temp 0
 @SP
 AM=M-1
@@ -39434,13 +40292,13 @@ AM=M-1
 D=M
 A=A-1
 D=M-D
-@LAB177
+@LAB188
 D;JLT
-@LAB178
+@LAB189
 D=0;JMP
-(LAB177)
+(LAB188)
 D=-1
-(LAB178)
+(LAB189)
 @SP
 A=M-1
 M=D
@@ -39475,7 +40333,7 @@ M=M+1
 A=M-1
 M=D
 //call Screen.drawPixel 2
-@Screen.drawPixel$ret179
+@Screen.drawPixel$ret190
 D=A
 @SP
 M=M+1
@@ -39517,7 +40375,7 @@ D=M
 M=D
 @Screen.drawPixel
 0;JMP
-(Screen.drawPixel$ret179)
+(Screen.drawPixel$ret190)
 //pop temp 0
 @SP
 AM=M-1

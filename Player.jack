@@ -61,7 +61,7 @@ class Player {
 			let key = Keyboard.keyPressed();
 		}
 
-		return key;
+		return key - 48;
 	}
 
 	method int getMoveAI(int board) {

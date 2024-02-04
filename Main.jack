@@ -2,7 +2,6 @@ class Main {
 	function void main() {
 		var Array board;
 		var int turn;
-		var int key;
 		var int d;
 		var int mod;
 		var int idx;
@@ -24,20 +23,21 @@ class Main {
 		do Main.drawGrid();
 
 		while (true) {
-			let key = p1.getMove(0);
-			let idx = key - 48;
+			let idx = p1.getMove(0);
 
-			let d = idx / 3;
-			let mod = idx - (d * 3); 
+			if (board[idx] = 0) {
+				let d = idx / 3;
+				let mod = idx - (d * 3); 
 
-			if (turn = 1) {
-				do Main.drawX(d, mod);
-			} else {
-				do Main.drawO(d, mod);
+				if (turn = 1) {
+					do Main.drawX(d, mod);
+				} else {
+					do Main.drawO(d, mod);
+				}
+
+				let board[idx] = turn;
+				let turn = 3 - turn;
 			}
-
-			let board[idx] = turn;
-			let turn = 3 - turn;
 		}
 
 		return;
@@ -72,7 +72,10 @@ class Main {
 		let rm = row * 85;
 		let cm = col * 85;
 
-		do Screen.drawCircle(42 + rm, 42 + cm, 37);
+		do Screen.drawHorizontal(10 + rm, 10 + cm, 75 + cm);
+		do Screen.drawHorizontal(75 + rm, 10 + cm, 75 + cm);
+		do Screen.drawVertical(10 + cm, 10 + rm, 75 + rm);
+		do Screen.drawVertical(75 + cm, 10 + rm, 75 + rm);
 
 		return;
 	}
