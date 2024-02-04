@@ -72,15 +72,15 @@ def link(files):
 if __name__ == '__main__':
     buildPerfect()
     link([
-        "Main.vm",
+        "src/Main.vm",
         "OS/Array.vm",
         "OS/Screen.vm",
         "OS/Math.vm",
         "OS/Memory.vm",
         "OS/Keyboard.vm",
         "Perfect.vm",
-        "Player.vm",
-        "ScreenUtil.vm"
+        "src/Player.vm",
+        "src/ScreenUtil.vm"
     ])
     compileTTT()
 
