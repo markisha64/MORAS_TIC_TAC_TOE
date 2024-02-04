@@ -159,16 +159,6 @@ function Math.multiply 5
 	return
 
 function Math.divide 4
-	push argument 1
-	push constant 0
-	eq
-	if-goto IF_TRUE0
-	goto IF_FALSE0
-	label IF_TRUE0
-	push constant 3
-	call Sys.error 1
-	pop temp 0
-	label IF_FALSE0
 	push argument 0
 	push constant 0
 	lt

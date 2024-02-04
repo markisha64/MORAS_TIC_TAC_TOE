@@ -78,7 +78,6 @@ function Screen.clearScreen 1
 	label WHILE_END0
 	push constant 0
 	
-	
 	return
 
 function Screen.updateLocation 0
@@ -122,38 +121,14 @@ function Screen.updateLocation 0
 	
 	return
 	
-	function Screen.setColor 0
+function Screen.setColor 0
 	push argument 0
 	pop static 2
 	push constant 0
 	
-	
 	return
 
-
 function Screen.drawPixel 3
-	push argument 0
-	push constant 0
-	lt
-	push argument 0
-	push constant 511
-	gt
-	or
-	push argument 1
-	push constant 0
-	lt
-	or
-	push argument 1
-	push constant 255
-	gt
-	or
-	if-goto IF_TRUE0
-	goto IF_FALSE0
-	label IF_TRUE0
-	push constant 7
-	call Sys.error 1
-	pop temp 0
-	label IF_FALSE0
 	push argument 0
 	push constant 16
 	call Math.divide 2
@@ -203,28 +178,6 @@ function Screen.drawConditional 0
 	return
 
 function Screen.drawLine 11
-	push argument 0
-	push constant 0
-	lt
-	push argument 2
-	push constant 511
-	gt
-	or
-	push argument 1
-	push constant 0
-	lt
-	or
-	push argument 3
-	push constant 255
-	gt
-	or
-	if-goto IF_TRUE0
-	goto IF_FALSE0
-	label IF_TRUE0
-	push constant 8
-	call Sys.error 1
-	pop temp 0
-	label IF_FALSE0
 	push argument 2
 	push argument 0
 	sub
