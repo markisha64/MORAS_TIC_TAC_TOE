@@ -72,10 +72,10 @@ class Main {
 		let rm = row * 85;
 		let cm = col * 85;
 
-		do Screen.drawHorizontal(10 + rm, 10 + cm, 75 + cm);
-		do Screen.drawHorizontal(75 + rm, 10 + cm, 75 + cm);
-		do Screen.drawVertical(10 + cm, 10 + rm, 75 + rm);
-		do Screen.drawVertical(75 + cm, 10 + rm, 75 + rm);
+		do ScreenUtil.drawHorizontal(10 + cm, 10 + rm, 75 + rm);
+		do ScreenUtil.drawHorizontal(75 + cm, 10 + rm, 75 + rm);
+		do ScreenUtil.drawVertical(10 + rm, 10 + cm, 75 + cm);
+		do ScreenUtil.drawVertical(75 + rm, 10 + cm, 75 + cm);
 
 		return;
 	}
