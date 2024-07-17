@@ -1,15 +1,15 @@
 
 function Screen.init 1
 	push constant 16384
-	pop static 1
+	pop static 12
 	push constant 0
 	not
-	pop static 2
+	pop static 13
 	push constant 17
 	call Array.new 1
-	pop static 0
+	pop static 11
 	push constant 0
-	push static 0
+	push static 11
 	add
 	push constant 1
 	pop temp 0
@@ -27,19 +27,19 @@ function Screen.init 1
 	add
 	pop local 0
 	push local 0
-	push static 0
+	push static 11
 	add
 	push local 0
 	push constant 1
 	sub
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
 	push local 0
 	push constant 1
 	sub
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
@@ -63,7 +63,7 @@ function Screen.clearScreen 1
 	not
 	if-goto WHILE_END0
 	push local 0
-	push static 1
+	push static 12
 	add
 	push constant 0
 	pop temp 0
@@ -81,15 +81,15 @@ function Screen.clearScreen 1
 	return
 
 function Screen.updateLocation 0
-	push static 2
+	push static 13
 	if-goto IF_TRUE0
 	goto IF_FALSE0
 	label IF_TRUE0
 	push argument 0
-	push static 1
+	push static 12
 	add
 	push argument 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -102,10 +102,10 @@ function Screen.updateLocation 0
 	goto IF_END0
 	label IF_FALSE0
 	push argument 0
-	push static 1
+	push static 12
 	add
 	push argument 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -123,7 +123,7 @@ function Screen.updateLocation 0
 	
 function Screen.setColor 0
 	push argument 0
-	pop static 2
+	pop static 13
 	push constant 0
 	
 	return
@@ -147,7 +147,7 @@ function Screen.drawPixel 3
 	pop local 2
 	push local 2
 	push local 1
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
@@ -379,7 +379,7 @@ function Screen.drawLine 11
 // 	sub
 // 	pop local 8
 // 	push local 7
-// 	push static 0
+// 	push static 11
 // 	add
 // 	pop pointer 1
 // 	push that 0
@@ -390,7 +390,7 @@ function Screen.drawLine 11
 // 	push local 8
 // 	push constant 1
 // 	add
-// 	push static 0
+// 	push static 11
 // 	add
 // 	pop pointer 1
 // 	push that 0
@@ -536,7 +536,7 @@ function Screen.drawLine 11
 // 	sub
 // 	pop local 10
 // 	push local 9
-// 	push static 0
+// 	push static 11
 // 	add
 // 	pop pointer 1
 // 	push that 0
@@ -547,7 +547,7 @@ function Screen.drawLine 11
 // 	push local 10
 // 	push constant 1
 // 	add
-// 	push static 0
+// 	push static 11
 // 	add
 // 	pop pointer 1
 // 	push that 0

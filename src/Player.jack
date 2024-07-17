@@ -15,7 +15,7 @@ class Player {
 		if (move < 5) {
 			if (move < 2) {
 				if (move < 1) {
-					return 7;
+					return 6;
 				}
 
 				return 3;
@@ -26,7 +26,7 @@ class Player {
 					return 0;
 				}
 
-				return 6;
+				return 7;
 			}
 		}
 
@@ -45,15 +45,15 @@ class Player {
 		return 2;
 	}
 	
-	method int getMove(int board) {
+	method int getMove(Array board, int boardInt) {
 		if (type = 0) {
-			return getMovePlayer();
+			return getMovePlayer(board, boardInt);
 		}		
 
-		return getMoveAI(board);
+		return getMoveAI(board, boardInt);
 	}
 
-	method int getMovePlayer() {
+	method int getMovePlayer(Array board, int boardInt) {
 		var int key;
 
 		let key = Keyboard.keyPressed();
@@ -64,7 +64,90 @@ class Player {
 		return key - 48;
 	}
 
-	method int getMoveAI(int board) {
-		return 0;
+	method int getMoveAI(Array board, int boardInt) {
+		var Array board;
+		var int min;
+		var int minRot;
+		var int t;
+		var int move;
+		var int mod;
+
+		let min = boardInt;
+		let minRot = 0;
+
+		// let t = Player.rotBoard1(board);
+		// if (t < min) {
+		// 	let min = t;
+		// 	let minRot = 1;
+		// }
+
+		// let t = Player.rotBoard2(board);
+		// if (t < min) {
+		// 	let min = t;
+		// 	let minRot = 2;
+		// }
+
+		// let t = Player.rotBoard3(board);
+		// if (t < min) {
+		// 	let min = t;
+		// 	let minRot = 3;
+		// }
+
+		let move = Perfect.move(min / 3);
+
+		let mod = min - ((min / 3) * 3);
+
+		if (mod = 0) {
+			let move = move - ((move / 16) * 16);
+		}
+
+		if (mod = 1) {
+			let move = (move - ((move / 256) * 256)) / 16;
+		}
+
+		if (mod = 2) {
+			let move = move / 256;
+		}
+
+		// while (minRot < 4) {
+		// 	let move = Player.getMoveRot(move);	
+
+		// 	let minRot = minRot + 1;
+		// }
+
+		return move;
+	}
+
+	// 0 1 2
+	// 3 4 5
+	// 6 7 8
+	// into
+	// 2 5 8
+	// 1 4 7
+	// 0 3 6
+	function int rotBoard1(Array board) {
+		return (9 * board[0]) + (243 * board[1]) + (6561 * board[2]) + (3 * board[3]) + (81 * board[4]) + (2187 * board[5]) + board[6] + (27 * board[7]) + (729 * board[8]);
+	}
+
+	// 0 1 2
+	// 3 4 5
+	// 6 7 8
+	// into
+	// 8 7 6
+	// 5 4 3
+	// 2 1 0
+	function int rotBoard2(Array board) {
+		return (6561 * board[0]) + (2187 * board[1]) + (729 * board[2]) + (243 * board[3]) + (81 * board[4]) + (27 * board[5]) + (9 * board[6]) + (3 * board[7]) + board[8];
+	}
+
+	// 0 1 2
+	// 3 4 5
+	// 6 7 8
+	// into
+	// 6 3 0
+	// 7 4 1
+	// 8 5 2
+	function int rotBoard3(Array board) {
+		return (729 * board[0]) + (27 * board[1]) + board[2] + (2187 * board[3]) + (81 * board[4]) + (3 * board[5]) + (6561 * board[6]) + (243 * board[7]) + (9 * board[8]);
 	}
 }

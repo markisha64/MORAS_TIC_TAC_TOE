@@ -40,6 +40,9 @@ DP = [-1 for i in range(3**9)]
 OM = [-1 for i in range(3**9)]
 OMROT = [-1 for i in range(3**9)]
 
+# 0 1 2
+# 3 4 5
+# 6 7 8
 def evauluateBoard(board):
     # win checks
     if board[0] == board[1] and board[1] == board[2] and board[0] != 0:
@@ -51,10 +54,10 @@ def evauluateBoard(board):
     if board[6] == board[7] and board[7] == board[8] and board[6] != 0:
         return board[6]
 
-    if board[0] == board[5] and board[5] == board[8] and board[0] != 0:
+    if board[0] == board[4] and board[4] == board[8] and board[0] != 0:
         return board[0]
 
-    if board[2] == board[5] and board[5] == board[6] and board[2] != 0:
+    if board[2] == board[4] and board[4] == board[6] and board[2] != 0:
         return board[2]
 
     if board[0] == board[3] and board[3] == board[6] and board[0] != 0:
@@ -91,36 +94,43 @@ def minimax(a, depth):
         return 0
 
     if v:
-        return (1 - 2 * (turn != v)) * (10 - depth)
-
-    f0 = board.index(0)
-    mn = minimax(a + turn * (3 ** f0), depth + 1)
-    mni = f0
-    mx = mn
-    mxi = f0
-
-    for i in range(9):
-        if board[i]:
-            continue
-
-        nv = minimax(a + turn * (3 ** i), depth + 1)
-
-        if nv < mn:
-            mn = nv            
-            mni = i
-
-        if nv > mx:
-            mx = nv
-            mxi = i
+        if turn == 2:
+            return 10 - depth
+        else:
+            return -10 + depth
 
     if turn == 1:
-        DP[a] = mx       
-        OM[a] = mxi
-        return mx 
+        bestVal = -1000
+
+        for i in range(9):
+            if board[i] != 0:
+                continue
+
+            value = minimax(a + turn * (3 ** i), depth + 1)            
+
+            if value > bestVal:
+                bestVal = value
+                bestMove = i
+
+        DP[a] = bestVal
+        OM[a] = bestMove
     else:
-        DP[a] = mn
-        OM[a] = mni
-        return mn
+        bestVal = 1000
+
+        for i in range(9):
+            if board[i] != 0:
+                continue
+
+            value = minimax(a + turn * (3 ** i), depth + 1)            
+
+            if value < bestVal:
+                bestVal = value
+                bestMove = i
+
+        DP[a] = bestVal
+        OM[a] = bestMove
+
+    return DP[a]
 
 def fillOMROT():
     for i in range(len(OMROT)):
@@ -130,27 +140,35 @@ if __name__ == '__main__':
     minimax(0, 0)
     fillOMROT()
 
-    tint = 180
-    board = intToBoard(tint)
-    turn = boardToTurn(board)
+    print(OM[1])
+    print(OM[9])
+    print(OM[3 ** 6])
+    print(OM[3 ** 8])
 
-    printBoard(board)
-    print(turn)
+    # printBoard(intToBoard(11))
+    # print(boardToInt(intToBoard(3 ** 8)))
 
-    printBoard(intToBoard(tint+ turn * 3 ** OM[0]))
+    # tint = 180
+    # board = intToBoard(tint)
+    # turn = boardToTurn(board)
 
-    mx = 0
-    for index, value in enumerate(OMROT):
-        if value != -1:
-            mx = max(index, mx)
+    # printBoard(board)
+    # print(turn)
 
-    print(mx)
-    print(OMROT[0:mx + 1])
+    # printBoard(intToBoard(tint+ turn * 3 ** OM[0]))
 
-    mx2 = 0
-    for index, value in enumerate(OMROT):
-        if value != -1 and index < mx:
-            mx2 = max(index, mx2)
+    # mx = 0
+    # for index, value in enumerate(OMROT):
+    #     if value != -1:
+    #         mx = max(index, mx)
 
-    print(mx2)
+    # print(mx)
+    # print(OMROT[0:mx + 1])
+
+    # mx2 = 0
+    # for index, value in enumerate(OMROT):
+    #     if value != -1 and index < mx:
+    #         mx2 = max(index, mx2)
+
+    # print(mx2)
         

@@ -2,12 +2,12 @@
 function Math.init 1
 	push constant 16
 	call Array.new 1
-	pop static 1
+	pop static 12
 	push constant 16
 	call Array.new 1
-	pop static 0
+	pop static 11
 	push constant 0
-	push static 0
+	push static 11
 	add
 	push constant 1
 	pop temp 0
@@ -25,19 +25,19 @@ function Math.init 1
 	add
 	pop local 0
 	push local 0
-	push static 0
+	push static 11
 	add
 	push local 0
 	push constant 1
 	sub
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
 	push local 0
 	push constant 1
 	sub
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
@@ -112,7 +112,7 @@ function Math.multiply 5
 	not
 	if-goto WHILE_END0
 	push local 3
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
@@ -130,7 +130,7 @@ function Math.multiply 5
 	pop local 0
 	push local 2
 	push local 3
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
@@ -176,7 +176,7 @@ function Math.divide 4
 	or
 	pop local 2
 	push constant 0
-	push static 1
+	push static 12
 	add
 	push argument 1
 	call Math.abs 1
@@ -198,7 +198,7 @@ function Math.divide 4
 	if-goto WHILE_END0
 	push constant 32767
 	push local 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -206,7 +206,7 @@ function Math.divide 4
 	sub
 	sub
 	push local 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -222,15 +222,15 @@ function Math.divide 4
 	push local 0
 	push constant 1
 	add
-	push static 1
+	push static 12
 	add
 	push local 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
 	push local 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -242,7 +242,7 @@ function Math.divide 4
 	push local 0
 	push constant 1
 	add
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -274,7 +274,7 @@ function Math.divide 4
 	not
 	if-goto WHILE_END1
 	push local 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -290,7 +290,7 @@ function Math.divide 4
 	label IF_TRUE3
 	push local 1
 	push local 0
-	push static 0
+	push static 11
 	add
 	pop pointer 1
 	push that 0
@@ -298,7 +298,7 @@ function Math.divide 4
 	pop local 1
 	push argument 0
 	push local 0
-	push static 1
+	push static 12
 	add
 	pop pointer 1
 	push that 0
@@ -344,7 +344,7 @@ function Math.divide 4
 // 	if-goto WHILE_END0
 // 	push local 3
 // 	push local 0
-// 	push static 0
+// 	push static 11
 // 	add
 // 	pop pointer 1
 // 	push that 0

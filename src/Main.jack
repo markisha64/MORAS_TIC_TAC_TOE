@@ -1,81 +1,14 @@
 class Main {
 	function void main() {
-		var Array board;
-		var int turn;
-		var int d;
-		var int mod;
-		var int idx;
-		var Player p1;
-		var Player p2;
-
+		var Game game;
+	
 		do Memory.init();
 		do Math.init();
 		do Screen.init();
 		do Keyboard.init();
 
-		let p1 = Player.new(0);
-		let p2 = Player.new(0);
-
-		let board = Array.new(9);
-
-		let turn = 1;
-
-		do Main.drawGrid();
-
-		while (true) {
-			let idx = p1.getMove(0);
-
-			if (board[idx] = 0) {
-				let d = idx / 3;
-				let mod = idx - (d * 3); 
-
-				if (turn = 1) {
-					do Main.drawX(d, mod);
-				} else {
-					do Main.drawO(d, mod);
-				}
-
-				let board[idx] = turn;
-				let turn = 3 - turn;
-			}
-		}
-
-		return;
-	}
-
-	function void drawGrid() {
-		do ScreenUtil.drawVertical(85, 0, 255);
-		do ScreenUtil.drawVertical(170, 0, 255);
-		do ScreenUtil.drawHorizontal(85, 0, 255);
-		do ScreenUtil.drawHorizontal(170, 0, 255);
-
-		return;
-	}
-
-	function void drawX(int col, int row) {
-		var int rm;
-		var int cm;
-
-		let rm = row * 85;
-		let cm = col * 85;
-	
-		do Screen.drawLine(10 + rm, 10 + cm, 75 + rm, 75 + cm);
-		do Screen.drawLine(75 + rm, 10 + cm, 10 + rm, 75 + cm);
-
-		return;
-	}
-
-	function void drawO(int col, int row) {
-		var int rm;
-		var int cm;
-
-		let rm = row * 85;
-		let cm = col * 85;
-
-		do ScreenUtil.drawHorizontal(10 + cm, 10 + rm, 75 + rm);
-		do ScreenUtil.drawHorizontal(75 + cm, 10 + rm, 75 + rm);
-		do ScreenUtil.drawVertical(10 + rm, 10 + cm, 75 + cm);
-		do ScreenUtil.drawVertical(75 + rm, 10 + cm, 75 + cm);
+		let game = Game.new();
+		do game.play();
 
 		return;
 	}

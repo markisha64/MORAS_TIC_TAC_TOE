@@ -4,11 +4,11 @@ function Output.init 0
 	pop static 4
 	push constant 0
 	not
-	pop static 2
+	pop static 6
 	push constant 32
-	pop static 1
+	pop static 5
 	push constant 0
-	pop static 0
+	pop static 4
 	push constant 6
 	call String.new 1
 	pop static 3
@@ -1568,7 +1568,7 @@ function Output.getMap 1
 	push constant 0
 	pop argument 0
 	label IF_FALSE0
-	push static 2
+	push static 6
 	if-goto IF_TRUE1
 	goto IF_FALSE1
 	label IF_TRUE1
@@ -1595,7 +1595,7 @@ function Output.drawChar 4
 	push argument 0
 	call Output.getMap 1
 	pop local 2
-	push static 1
+	push static 5
 	pop local 0
 	label WHILE_EXP0
 	push local 1
@@ -1603,7 +1603,7 @@ function Output.drawChar 4
 	lt
 	not
 	if-goto WHILE_END0
-	push static 2
+	push static 6
 	if-goto IF_TRUE0
 	goto IF_FALSE0
 	label IF_TRUE0
@@ -1681,21 +1681,21 @@ function Output.moveCursor 0
 	push argument 1
 	push constant 2
 	call Math.divide 2
-	pop static 0
+	pop static 4
 	push constant 32
 	push argument 0
 	push constant 352
 	call Math.multiply 2
 	add
-	push static 0
+	push static 4
 	add
-	pop static 1
+	pop static 5
 	push argument 1
-	push static 0
+	push static 4
 	push constant 2
 	call Math.multiply 2
 	eq
-	pop static 2
+	pop static 6
 	push constant 32
 	call Output.drawChar 1
 	pop temp 0
@@ -1727,21 +1727,21 @@ function Output.printChar 0
 	push argument 0
 	call Output.drawChar 1
 	pop temp 0
-	push static 2
+	push static 6
 	not
 	if-goto IF_TRUE2
 	goto IF_FALSE2
 	label IF_TRUE2
-	push static 0
+	push static 4
 	push constant 1
 	add
-	pop static 0
-	push static 1
+	pop static 4
+	push static 5
 	push constant 1
 	add
-	pop static 1
+	pop static 5
 	label IF_FALSE2
-	push static 0
+	push static 4
 	push constant 32
 	eq
 	if-goto IF_TRUE3
@@ -1751,9 +1751,9 @@ function Output.printChar 0
 	pop temp 0
 	goto IF_END3
 	label IF_FALSE3
-	push static 2
+	push static 6
 	not
-	pop static 2
+	pop static 6
 	label IF_END3
 	label IF_END1
 	label IF_END0
@@ -1799,74 +1799,74 @@ function Output.printInt 0
 	return
 
 function Output.println 0
-	push static 1
+	push static 5
 	push constant 352
 	add
-	push static 0
+	push static 4
 	sub
-	pop static 1
+	pop static 5
 	push constant 0
-	pop static 0
+	pop static 4
 	push constant 0
 	not
-	pop static 2
-	push static 1
+	pop static 6
+	push static 5
 	push constant 8128
 	eq
 	if-goto IF_TRUE0
 	goto IF_FALSE0
 	label IF_TRUE0
 	push constant 32
-	pop static 1
+	pop static 5
 	label IF_FALSE0
 	push constant 0
 	
 	return
 
 function Output.backSpace 0
-	push static 2
+	push static 6
 	if-goto IF_TRUE0
 	goto IF_FALSE0
 	label IF_TRUE0
-	push static 0
+	push static 4
 	push constant 0
 	gt
 	if-goto IF_TRUE1
 	goto IF_FALSE1
 	label IF_TRUE1
-	push static 0
+	push static 4
 	push constant 1
 	sub
-	pop static 0
-	push static 1
+	pop static 4
+	push static 5
 	push constant 1
 	sub
-	pop static 1
+	pop static 5
 	goto IF_END1
 	label IF_FALSE1
 	push constant 31
-	pop static 0
-	push static 1
+	pop static 4
+	push static 5
 	push constant 32
 	eq
 	if-goto IF_TRUE2
 	goto IF_FALSE2
 	label IF_TRUE2
 	push constant 8128
-	pop static 1
+	pop static 5
 	label IF_FALSE2
-	push static 1
+	push static 5
 	push constant 321
 	sub
-	pop static 1
+	pop static 5
 	label IF_END1
 	push constant 0
-	pop static 2
+	pop static 6
 	goto IF_END0
 	label IF_FALSE0
 	push constant 0
 	not
-	pop static 2
+	pop static 6
 	label IF_END0
 	push constant 32
 	call Output.drawChar 1

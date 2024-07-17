@@ -127,7 +127,7 @@ class Parser:
         elif src == "pointer":
             l = "@" + str(3 + int(loc)) + "\nD=M\n"
         elif src == "jumptable":
-             return "@" + str(loc) + "\nD=M\n" + "@JUMPTABLE_END\n0;JMP\n"
+             return "@" + str(loc) + "\nD=A\n" + "@JUMPTABLE_END\n0;JMP"
         else:
             self._flag = False
             Parser._error("Push", n, "Undefined source \"" + src + "\".");
