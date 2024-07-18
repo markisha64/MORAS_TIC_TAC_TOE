@@ -21,27 +21,27 @@ class Game {
 	}
 
 	method int win() {
-		var int i;
+		// var int i;
 
-		let i = 0;
+		// let i = 0;
 
-		while (i < 3) {
-			if ((board[i + 0] = board[i + 1] & (board[i + 1] = board[i + 2]) & ~(board[i + 0] = 0))) {
-				return board[i + 0];
-			}
+		// while (i < 3) {
+		// 	if ((board[i + 0] = board[i + 1] & (board[i + 1] = board[i + 2]) & ~(board[i + 0] = 0))) {
+		// 		return board[i + 0];
+		// 	}
 
-			let i = i + 1;
-		}
+		// 	let i = i + 1;
+		// }
 
-		let i = 0;
+		// let i = 0;
 
-		while (i < 3) {
-			if ((board[i + 0] = board[i + 3] & (board[i + 3] = board[i + 6]) & ~(board[i + 0] = 0))) {
-				return board[i + 0];
-			}
+		// while (i < 3) {
+		// 	if ((board[i + 0] = board[i + 3] & (board[i + 3] = board[i + 6]) & ~(board[i + 0] = 0))) {
+		// 		return board[i + 0];
+		// 	}
 
-			let i = i + 1;
-		}
+		// 	let i = i + 1;
+		// }
 
 		
 		// if ((board[0] = board[1] & (board[1] = board[2]) & ~(board[0] = 0))) {

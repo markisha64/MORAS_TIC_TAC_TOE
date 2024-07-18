@@ -3,28 +3,18 @@ from VMparser import Parser
 from minimax import OMROT, minimax, fillOMROT
 from math import ceil
 
-osFiles = [
-    "OS/Array",
-    "OS/Keyboard",
-    "OS/Math",
-    "OS/Memory",
-    # "OS/Output",
-    "OS/Screen",
-    "OS/String",
-    # "OS/Sys",
-]
-
 def compileTTT():
     P = Parser()
     P.parseFile('TTT')
     P.writeFile('TTT')
+
+optimize_end = 24
 
 def buildPerfect():
     minimax(0, 0)
     fillOMROT()
 
     final = [-1 for _ in range(3 ** 8)]
-    mx = 0
 
     for i in range(len(OMROT) // 3):
         if OMROT[i * 3] == -1 and OMROT[i * 3 + 1] == -1 and OMROT[i * 3+ 2] == -1:
@@ -32,34 +22,41 @@ def buildPerfect():
 
         final[i] = max(OMROT[i * 3], 0) + max(OMROT[i * 3 + 1], 0) * 2 ** 4 + max(OMROT[i * 3 + 2], 0) * 2 ** 8
 
-    # mx1 = 0
-    # for i in range(len(final)):
-    #     if final[i] != -1:
-    #         mx1 = i
+    ff = [x for x in final]
+    
+    optim_values = []
+    for _ in range(optimize_end):
+        mx = 0
+        for i in range(len(final)):
+            if final[i] != -1:
+                mx = i
 
-    # final1 = final[0:mx1 + 1]
+        optim_values.append((mx, final[mx]))
+        final = final[:mx]
 
-    # mx2 = 0
-    # for i in range(len(final1) - 1):
-    #     if final[i] != -1:
-    #         mx2 = i
+    mx = 0
+    for i in range(len(final)):
+        if final[i] != -1:
+            mx = i
 
-    # final2 = final1[0:mx2 + 1]
-
-    # mx3 = 0
-    # for i in range(len(final2) - 1):
-    #     if final[i] != -1:
-    #         mx3 = i
-
-    # final3 = final2[0:mx3 + 1]
-
-    # print(mx1, mx2, mx3)
-
+    final = final[:mx + 1]
+    
     with open('Perfect.vm', 'w') as f:
         f.write("function Perfect.move 0\n")    
+
+        for (i, v) in optim_values:
+            f.write("push argument 0\n")
+            f.write(f"push constant {i}\n")
+            f.write("eq\n")
+            f.write("not\n")
+            f.write("if-goto PERFECT_START\n")
+            f.write(f"push constant {v}\n")
+            f.write("return\n")
+
+        f.write("label PERFECT_START\n")
         f.write("push argument 0\n")
         f.write("pop jumptable 0\n")
-
+           
         for x in final:
             f.write(f"push jumptable {x}\n")
 

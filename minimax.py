@@ -17,14 +17,27 @@ def intToBoard(a):
 def boardToInt(board):
     return sum([board[i] * (3 ** i) for i in range(9)])
 
+def minRot(board):
+    mn = minRotBoard(board)
+
+    if r == mn:
+        return 0
+
+    c = [x for x in board]
+    for i in range(1, 4):
+        c[0], c[2], c[6], c[8] = c[2], c[6], c[8], c[0]
+        c[1], c[3], c[5], c[7] = c[3], c[5], c[7], c[1]
+        if boardToInt(c) == mn:
+            return i
+
 def minRotBoard(board):
     r = sum([board[i] * (3 ** i) for i in range(9)])
 
     c = [x for x in board]
     for _ in range(3):
-        c[0], c[2], c[6], c[8] = c[2], c[6], c[8], c[0]
-        c[1], c[3], c[5], c[7] = c[3], c[5], c[7], c[1]
-        r = min(r, sum([c[i] * (3 ** i) for i in range(9)]))
+        c[0], c[2], c[8], c[6] = c[2], c[8], c[6], c[0]
+        c[1], c[5], c[7], c[3] = c[5], c[7], c[1], c[3]
+        r = min(r, boardToInt(c))
 
     return r
 
@@ -132,9 +145,24 @@ def minimax(a, depth):
 
     return DP[a]
 
+def rotMove(move):
+    return [
+        2,
+        5,
+        8,
+        1,
+        4,
+        7,
+        0,
+        3,
+        6
+    ][move]
+
 def fillOMROT():
     for i in range(len(OMROT)):
-        OMROT[minRotBoard(intToBoard(i))] = OM[i]  
+        mn = minRotBoard(intToBoard(i))
+        if OMROT[mn] == -1:
+            OMROT[mn] = OM[i]  
 
 if __name__ == '__main__':
     minimax(0, 0)
@@ -144,6 +172,15 @@ if __name__ == '__main__':
     print(OM[9])
     print(OM[3 ** 6])
     print(OM[3 ** 8])
+
+    c = 1 + 6 + 9 + 2 * 3 ** 4 + 3 ** 7
+    b = intToBoard(c)
+    t = boardToTurn(b)
+
+    printBoard(b)
+    printBoard(intToBoard(minRotBoard(b)))
+    printBoard(intToBoard(c + t * 3 ** OMROT[c]))
+
 
     # printBoard(intToBoard(11))
     # print(boardToInt(intToBoard(3 ** 8)))

@@ -7,43 +7,43 @@ class Player {
 		return this;
 	}
 
-	function int getMoveRot(int move) {
-		if (move = 4) {
-			return 4;
-		}
+	// function int getMoveRot(int move) {
+	// 	if (move = 4) {
+	// 		return 4;
+	// 	}
 
-		if (move < 5) {
-			if (move < 2) {
-				if (move < 1) {
-					return 6;
-				}
+	// 	if (move < 5) {
+	// 		if (move < 2) {
+	// 			if (move < 1) {
+	// 				return 6;
+	// 			}
 
-				return 3;
-			}
+	// 			return 3;
+	// 		}
 
-			if (move < 4) {
-				if (move < 3) {
-					return 0;
-				}
+	// 		if (move < 4) {
+	// 			if (move < 3) {
+	// 				return 0;
+	// 			}
 
-				return 7;
-			}
-		}
+	// 			return 7;
+	// 		}
+	// 	}
 
-		if (move < 7) {
-			if (move < 6) {
-				return 1;
-			}
+	// 	if (move < 7) {
+	// 		if (move < 6) {
+	// 			return 1;
+	// 		}
 
-			return 8;
-		}
+	// 		return 8;
+	// 	}
 
-		if (move < 8) {
-			return 5;
-		}
+	// 	if (move < 8) {
+	// 		return 5;
+	// 	}
 
-		return 2;
-	}
+	// 	return 2;
+	// }
 	
 	method int getMove(Array board, int boardInt) {
 		if (type = 0) {
@@ -125,9 +125,9 @@ class Player {
 	// 2 5 8
 	// 1 4 7
 	// 0 3 6
-	function int rotBoard1(Array board) {
-		return (9 * board[0]) + (243 * board[1]) + (6561 * board[2]) + (3 * board[3]) + (81 * board[4]) + (2187 * board[5]) + board[6] + (27 * board[7]) + (729 * board[8]);
-	}
+	// function int rotBoard1(Array board) {
+	// 	return (9 * board[0]) + (243 * board[1]) + (6561 * board[2]) + (3 * board[3]) + (81 * board[4]) + (2187 * board[5]) + board[6] + (27 * board[7]) + (729 * board[8]);
+	// }
 
 	// 0 1 2
 	// 3 4 5
@@ -136,9 +136,9 @@ class Player {
 	// 8 7 6
 	// 5 4 3
 	// 2 1 0
-	function int rotBoard2(Array board) {
-		return (6561 * board[0]) + (2187 * board[1]) + (729 * board[2]) + (243 * board[3]) + (81 * board[4]) + (27 * board[5]) + (9 * board[6]) + (3 * board[7]) + board[8];
-	}
+	// function int rotBoard2(Array board) {
+	// 	return (6561 * board[0]) + (2187 * board[1]) + (729 * board[2]) + (243 * board[3]) + (81 * board[4]) + (27 * board[5]) + (9 * board[6]) + (3 * board[7]) + board[8];
+	// }
 
 	// 0 1 2
 	// 3 4 5
@@ -147,7 +147,7 @@ class Player {
 	// 6 3 0
 	// 7 4 1
 	// 8 5 2
-	function int rotBoard3(Array board) {
-		return (729 * board[0]) + (27 * board[1]) + board[2] + (2187 * board[3]) + (81 * board[4]) + (3 * board[5]) + (6561 * board[6]) + (243 * board[7]) + (9 * board[8]);
-	}
+	// function int rotBoard3(Array board) {
+	// 	return (729 * board[0]) + (27 * board[1]) + board[2] + (2187 * board[3]) + (81 * board[4]) + (3 * board[5]) + (6561 * board[6]) + (243 * board[7]) + (9 * board[8]);
+	// }
 }
