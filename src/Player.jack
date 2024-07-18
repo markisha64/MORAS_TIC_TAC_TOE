@@ -1,8 +1,15 @@
 class Player {
 	field int type;
+	field Array mults;
+	field Array boardCopy;
+	field int mnBoard;
+	field int mnIndex;
 
-	constructor Player new(int t) {
+	constructor Player new(int t, Array m) {
 		let type = t;
+		let mults = m;
+
+		let boardCopy = Array.new(9);
 
 		return this;
 	}
@@ -117,6 +124,73 @@ class Player {
 
 		return move;
 	}
+
+	method int sumBoardCopy() {
+		var int i, j;
+
+		let i = 0;
+		let j = 0;
+
+		while (i < 9) {
+			let j = j + (boardCopy[i] * mults[i]);
+			let i = i + 1;
+		}
+
+		return j;
+	}
+
+	method void swapBoardCopyIdx(int i, int j) {
+		var int t;
+
+		let t = boardCopy[i];
+		let boardCopy[i] = boardCopy[j];
+		let boardCopy[j] = t;
+
+		return;
+	}
+
+	method void swapRotate(int a, int b, int c, int d) {
+		do swapBoardCopyIdx(a, b);
+		do swapBoardCopyIdx(b, c);
+		do swapBoardCopyIdx(c, d);
+		
+		return;
+	}
+
+	// method void minRotBoard(Array board) {
+	// 	var int mn, mni, s;
+	// 	var int i;
+
+	// 	let i = 0;
+	// 	while (i < 9) {
+	// 		// copy board
+	// 		let boardCopy[i] = board[i];
+
+	// 		let i = i + 1;
+	// 	}
+
+	// 	let i = 1;
+	// 	let mn = sumBoardCopy();
+	// 	let mni = 0;
+
+	// 	while (i < 4) {
+	// 		do swapRotate(0, 2, 8, 6);
+	// 		do swapRotate(1, 5, 7, 3);
+
+	// 		let s = sumBoardCopy();
+	// 		if (s < mn) {
+	// 			let mn = s;
+	// 			let mni = i;
+	// 		}
+		
+	// 		let i = i + 1;
+	// 	}		
+
+	// 	let mnBoard = mn;
+	// 	let mnIndex = mni;
+	
+	// 	return;
+	// }
 
 	// 0 1 2
 	// 3 4 5

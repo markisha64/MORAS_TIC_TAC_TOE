@@ -58,7 +58,7 @@ def buildPerfect():
         f.write("pop jumptable 0\n")
            
         for x in final:
-            f.write(f"push jumptable {x}\n")
+            f.write(f"push jumptable {max(x, 0)}\n")
 
         f.write("jumptable-end\n")
         f.write("return\n")

@@ -4,12 +4,15 @@ class Game {
 	field Array mults;
 	field int gameDone;
 	field int winner;
+	field int played_turns;
 	
 	constructor Game new() {
 		var int i, j;
 
 		let i = 0;
 		let j = 1;
+
+		let played_turns = 0;
 		
 		let board = Array.new(9);
 
@@ -74,6 +77,10 @@ class Game {
 		do checkDiag(0, 8);		
 		do checkDiag(2, 6);		
 
+		if (played_turns = 9) {
+			return 3;
+		}
+
 		return 0;
 	}
 
@@ -85,8 +92,8 @@ class Game {
 		var Player p1;
 		var Player p2;
 
-		let p1 = Player.new(0);
-		let p2 = Player.new(1);
+		let p1 = Player.new(0, mults);
+		let p2 = Player.new(1, mults);
 
 		let boardInt = 0;
 
@@ -113,6 +120,7 @@ class Game {
 			let board[idx] = turn;
 			let boardInt = boardInt + (mults[idx] * turn);
 			let turn = 3 - turn;
+			let played_turns = played_turns + 1;
 		}
 
 		return;
