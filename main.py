@@ -2,11 +2,23 @@
 from VMparser import Parser
 from minimax import OMROT, minimax, fillOMROT
 from math import ceil
+import re
 
 def compileTTT():
     P = Parser()
     P.parseFile('TTT')
     P.writeFile('TTT')
+
+    with open('TTT.asm') as file:
+        b = file.read()
+
+    stripped = [x for x in b.split('\n') if not re.search(r"^//.*", x) and not re.search(r"\(.*\)", x) ]
+
+    with open('TTT_stripped.asm', 'w') as file:
+        for line in stripped:
+            file.write(f"{line}\n")
+
+    print(len(stripped))
 
 optimize_end = 24
 

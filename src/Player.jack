@@ -157,40 +157,40 @@ class Player {
 		return;
 	}
 
-	// method void minRotBoard(Array board) {
-	// 	var int mn, mni, s;
-	// 	var int i;
+	method void minRotBoard(Array board) {
+		var int mn, mni, s;
+		var int i;
 
-	// 	let i = 0;
-	// 	while (i < 9) {
-	// 		// copy board
-	// 		let boardCopy[i] = board[i];
+		let i = 0;
+		while (i < 9) {
+			// copy board
+			let boardCopy[i] = board[i];
 
-	// 		let i = i + 1;
-	// 	}
+			let i = i + 1;
+		}
 
-	// 	let i = 1;
-	// 	let mn = sumBoardCopy();
-	// 	let mni = 0;
+		let i = 1;
+		let mn = sumBoardCopy();
+		let mni = 0;
 
-	// 	while (i < 4) {
-	// 		do swapRotate(0, 2, 8, 6);
-	// 		do swapRotate(1, 5, 7, 3);
+		while (i < 4) {
+			do swapRotate(0, 2, 8, 6);
+			do swapRotate(1, 5, 7, 3);
 
-	// 		let s = sumBoardCopy();
-	// 		if (s < mn) {
-	// 			let mn = s;
-	// 			let mni = i;
-	// 		}
+			let s = sumBoardCopy();
+			if (s < mn) {
+				let mn = s;
+				let mni = i;
+			}
 		
-	// 		let i = i + 1;
-	// 	}		
+			let i = i + 1;
+		}		
 
-	// 	let mnBoard = mn;
-	// 	let mnIndex = mni;
+		let mnBoard = mn;
+		let mnIndex = mni;
 	
-	// 	return;
-	// }
+		return;
+	}
 
 	// 0 1 2
 	// 3 4 5

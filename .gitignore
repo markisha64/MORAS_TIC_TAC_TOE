@@ -1,4 +1,5 @@
 __pycache__
-TTT.*
+TTT*
 src/*.vm
 nand2tetris
+.DS_Store
