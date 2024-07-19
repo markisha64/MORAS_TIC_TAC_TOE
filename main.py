@@ -1,7 +1,6 @@
 
 from VMparser import Parser
 from minimax import OMROT, minimax, fillOMROT
-from math import ceil
 import re
 
 def compileTTT():
@@ -33,8 +32,6 @@ def buildPerfect():
             continue
 
         final[i] = max(OMROT[i * 3], 0) + max(OMROT[i * 3 + 1], 0) * 2 ** 4 + max(OMROT[i * 3 + 2], 0) * 2 ** 8
-
-    ff = [x for x in final]
     
     optim_values = []
     for _ in range(optimize_end):
