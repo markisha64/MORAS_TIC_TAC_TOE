@@ -20,7 +20,7 @@ def boardToInt(board):
 def minRot(board):
     mn = minRotBoard(board)
 
-    if r == mn:
+    if intToBoard(board) == mn:
         return 0
 
     c = [x for x in board]
@@ -36,7 +36,7 @@ def minRotBoard(board):
     c = [x for x in board]
     for _ in range(3):
         c[0], c[2], c[8], c[6] = c[2], c[8], c[6], c[0]
-        c[1], c[5], c[7], c[3] = c[5], c[7], c[1], c[3]
+        c[1], c[5], c[7], c[3] = c[5], c[7], c[3], c[1]
         r = min(r, boardToInt(c))
 
     return r
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     print(OM[3 ** 6])
     print(OM[3 ** 8])
 
-    c = 1 + 6 + 9 + 2 * 3 ** 4 + 3 ** 7
+    c = 2 * 3 ** 1 + 9 + 2 * 3 ** 4 + 3 ** 6  + 3 ** 7
     b = intToBoard(c)
     t = boardToTurn(b)
 

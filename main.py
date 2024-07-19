@@ -19,6 +19,21 @@ def compileTTT():
 
     print(len(stripped))
 
+def buildSwaps():
+    swaps = [6, 3, 0, 7, 4, 1, 8, 5, 2]
+    
+    with open("Swaps.vm", "w") as f:
+        f.write("function Swaps.get 0\n")    
+        f.write("push argument 0\n")
+        f.write("pop jumptable 0\n")
+
+        for swap in swaps:
+            f.write(f"push jumptable {swap}\n")
+
+        f.write("jumptable-end\n")
+        f.write("return\n")
+        
+
 optimize_end = 24
 
 def buildPerfect():
@@ -101,6 +116,7 @@ def link(files):
 
 if __name__ == '__main__':
     buildPerfect()
+    buildSwaps()
     link([
         "src/Main.vm",
         "OS/Array.vm",
@@ -111,7 +127,8 @@ if __name__ == '__main__':
         "src/Player.vm",
         "src/Game.vm",
         "src/ScreenUtil.vm",
-        "Perfect.vm"
+        "Perfect.vm",
+        "Swaps.vm"
     ])
     compileTTT()
 
