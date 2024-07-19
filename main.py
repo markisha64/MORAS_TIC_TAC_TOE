@@ -34,7 +34,7 @@ def buildSwaps():
         f.write("return\n")
         
 
-optimize_end = 24
+optimize_end = 39
 
 def buildPerfect():
     minimax(0, 0)
