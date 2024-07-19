@@ -108,19 +108,21 @@ class Game {
 				let idx = p2.getMove(board, boardInt);
 			}
 
-			let d = idx / 3;
-			let mod = idx - (d * 3); 
+			if (board[idx] = 0) {
+				let d = idx / 3;
+				let mod = idx - (d * 3); 
 
-			if (turn = 1) {
-				do Game.drawX(d, mod);
-			} else {
-				do Game.drawO(d, mod);
+				if (turn = 1) {
+					do Game.drawX(d, mod);
+				} else {
+					do Game.drawO(d, mod);
+				}
+
+				let board[idx] = turn;
+				let boardInt = boardInt + (mults[idx] * turn);
+				let turn = 3 - turn;
+				let played_turns = played_turns + 1;
 			}
-
-			let board[idx] = turn;
-			let boardInt = boardInt + (mults[idx] * turn);
-			let turn = 3 - turn;
-			let played_turns = played_turns + 1;
 		}
 
 		return;
