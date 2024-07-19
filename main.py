@@ -49,20 +49,38 @@ def buildPerfect():
             mx = i
 
     final = final[:mx + 1]
+
+    grouped = {}
+    for (i, v) in optim_values:
+        if v not in grouped:
+            grouped[v] = []
+
+        grouped[v].append(i)
+
+    ncounter = 0
     
     with open('Perfect.vm', 'w') as f:
         f.write("function Perfect.move 0\n")    
 
-        for (i, v) in optim_values:
+        for k, v in grouped.items():           
             f.write("push argument 0\n")
-            f.write(f"push constant {i}\n")
+            f.write(f"push constant {v[0]}\n")
             f.write("eq\n")
-            f.write("not\n")
-            f.write("if-goto PERFECT_START\n")
-            f.write(f"push constant {v}\n")
-            f.write("return\n")
 
-        f.write("label PERFECT_START\n")
+            for i in range(1, len(v)):
+                f.write("push argument 0\n")
+                f.write(f"push constant {v[i]}\n")
+                f.write("eq\n")
+                f.write("or\n")
+
+            f.write("not\n")
+            f.write(f"if-goto NEXT_{ncounter}\n")
+            f.write(f"push constant {k}\n")
+            f.write("return\n")
+            f.write(f"label NEXT_{ncounter}\n")
+
+            ncounter = ncounter + 1
+
         f.write("push argument 0\n")
         f.write("pop jumptable 0\n")
            

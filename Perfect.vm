@@ -2,172 +2,123 @@ function Perfect.move 0
 push argument 0
 push constant 5686
 eq
-not
-if-goto PERFECT_START
-push constant 1024
-return
-push argument 0
-push constant 4246
-eq
-not
-if-goto PERFECT_START
-push constant 768
-return
-push argument 0
-push constant 4229
-eq
-not
-if-goto PERFECT_START
-push constant 64
-return
 push argument 0
 push constant 4228
 eq
+or
+push argument 0
+push constant 4066
+eq
+or
+push argument 0
+push constant 4064
+eq
+or
+push argument 0
+push constant 3902
+eq
+or
+push argument 0
+push constant 3893
+eq
+or
 not
-if-goto PERFECT_START
+if-goto NEXT_0
 push constant 1024
 return
+label NEXT_0
+push argument 0
+push constant 4246
+eq
+push argument 0
+push constant 4084
+eq
+or
+push argument 0
+push constant 3922
+eq
+or
+not
+if-goto NEXT_1
+push constant 768
+return
+label NEXT_1
+push argument 0
+push constant 4229
+eq
+push argument 0
+push constant 4073
+eq
+or
+push argument 0
+push constant 4055
+eq
+or
+not
+if-goto NEXT_2
+push constant 64
+return
+label NEXT_2
 push argument 0
 push constant 4174
 eq
+push argument 0
+push constant 3958
+eq
+or
+push argument 0
+push constant 3932
+eq
+or
+push argument 0
+push constant 3930
+eq
+or
+push argument 0
+push constant 3921
+eq
+or
+push argument 0
+push constant 3904
+eq
+or
+push argument 0
+push constant 3903
+eq
+or
+push argument 0
+push constant 3895
+eq
+or
 not
-if-goto PERFECT_START
+if-goto NEXT_3
 push constant 1280
 return
+label NEXT_3
 push argument 0
 push constant 4092
 eq
 not
-if-goto PERFECT_START
+if-goto NEXT_4
 push constant 256
 return
-push argument 0
-push constant 4084
-eq
-not
-if-goto PERFECT_START
-push constant 768
-return
-push argument 0
-push constant 4073
-eq
-not
-if-goto PERFECT_START
-push constant 64
-return
-push argument 0
-push constant 4066
-eq
-not
-if-goto PERFECT_START
-push constant 1024
-return
-push argument 0
-push constant 4064
-eq
-not
-if-goto PERFECT_START
-push constant 1024
-return
-push argument 0
-push constant 4055
-eq
-not
-if-goto PERFECT_START
-push constant 64
-return
+label NEXT_4
 push argument 0
 push constant 3959
 eq
-not
-if-goto PERFECT_START
-push constant 16
-return
-push argument 0
-push constant 3958
-eq
-not
-if-goto PERFECT_START
-push constant 1280
-return
-push argument 0
-push constant 3932
-eq
-not
-if-goto PERFECT_START
-push constant 1280
-return
-push argument 0
-push constant 3930
-eq
-not
-if-goto PERFECT_START
-push constant 1280
-return
-push argument 0
-push constant 3922
-eq
-not
-if-goto PERFECT_START
-push constant 768
-return
-push argument 0
-push constant 3921
-eq
-not
-if-goto PERFECT_START
-push constant 1280
-return
 push argument 0
 push constant 3905
 eq
-not
-if-goto PERFECT_START
-push constant 16
-return
-push argument 0
-push constant 3904
-eq
-not
-if-goto PERFECT_START
-push constant 1280
-return
-push argument 0
-push constant 3903
-eq
-not
-if-goto PERFECT_START
-push constant 1280
-return
-push argument 0
-push constant 3902
-eq
-not
-if-goto PERFECT_START
-push constant 1024
-return
+or
 push argument 0
 push constant 3896
 eq
+or
 not
-if-goto PERFECT_START
+if-goto NEXT_5
 push constant 16
 return
-push argument 0
-push constant 3895
-eq
-not
-if-goto PERFECT_START
-push constant 1280
-return
-push argument 0
-push constant 3893
-eq
-not
-if-goto PERFECT_START
-push constant 1024
-return
-label PERFECT_START
+label NEXT_5
 push argument 0
 pop jumptable 0
 push jumptable 64
