@@ -31,33 +31,11 @@ class Game {
 		return this;
 	}
 
-	method void checkLine(int a, int b, int c) {
-		var int i;
+	method void checkWin(int a, int b, int c) {
 		var int ab, bb, cb;
-
-		let i = 0;
-
-		while (i < 3) {
-			let ab = board[i + a];
-			let bb = board[i + b];
-			let cb = board[i + c];
-
-			if ((ab = bb) & (bb = cb) & ~(ab = 0)) {
-				let gameDone = 1;
-				let winner = ab;
-
-				return;
-			}
-		}
-
-		return;
-	}
-
-	method void checkDiag(int a, int c) {
-		var int ab, bb, cb;
-
+	
 		let ab = board[a];
-		let bb = board[4];
+		let bb = board[b];
 		let cb = board[c];
 
 		if ((ab = bb) & (bb = cb) & ~(ab = 0)) {
@@ -65,6 +43,18 @@ class Game {
 			let winner = ab;
 
 			return;
+		}
+		
+		return;
+	}
+
+	method void checkLine(int a, int b, int c) {
+		var int i;
+
+		let i = 0;
+
+		while (i < 3) {
+			do checkWin(i + a, i + b, i + c);
 		}
 
 		return;
@@ -74,8 +64,8 @@ class Game {
 		do checkLine(0, 1, 2);
 		do checkLine(0, 3, 6);
 
-		do checkDiag(0, 8);		
-		do checkDiag(2, 6);		
+		do checkWin(0, 4, 8);		
+		do checkWin(2, 4, 6);		
 
 		if (played_turns = 9) {
 			return 3;
