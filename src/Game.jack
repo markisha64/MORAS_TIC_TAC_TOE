@@ -48,6 +48,8 @@ class Game {
 
 				return;
 			}
+
+			let i = i + 1;
 		}
 
 		return;
@@ -70,7 +72,7 @@ class Game {
 		return;
 	}
 
-	method int win() {
+	method void win() {
 		do checkLine(0, 1, 2);
 		do checkLine(0, 3, 6);
 
@@ -78,10 +80,11 @@ class Game {
 		do checkDiag(2, 6);		
 
 		if (played_turns = 9) {
-			return 3;
+			let gameDone = 1;
+			let winner = 3;
 		}
 
-		return 0;
+		return;
 	}
 
 	method void play() {
@@ -122,6 +125,8 @@ class Game {
 				let boardInt = boardInt + (mults[idx] * turn);
 				let turn = 3 - turn;
 				let played_turns = played_turns + 1;
+
+				do win();
 			}
 		}
 
