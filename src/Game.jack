@@ -6,6 +6,10 @@ class Game {
 	field int winner;
 	field int played_turns;
 	field int win_state;
+	field int win_row_1;
+	field int win_col_1;
+	field int win_row_2;
+	field int win_col_2;
 	
 	constructor Game new() {
 		var int i, j;
@@ -75,6 +79,50 @@ class Game {
 		return;
 	}
 
+	method void getWinRowsCols() {
+		if (win_state = 6) {
+			let win_row_1 = 0;
+			let win_col_1 = 0;
+			let win_row_2 = 2;
+			let win_col_2 = 2;
+		
+			return;
+		}
+
+		if (win_state = 7) {
+			let win_row_1 = 2;
+			let win_col_1 = 0;
+			let win_row_2 = 0;
+			let win_col_2 = 2;
+		
+			return;
+		}
+
+
+		if ((win_state / 3) = 0) {
+			let win_row_1 = win_state;
+			let win_col_1 = 0;
+			let win_row_2 = win_state;
+			let win_col_2 = 2;
+		
+			return;
+		}
+
+		let win_row_1 = 0;
+		let win_col_1 = win_state - 3;
+		let win_row_2 = 2;
+		let win_col_2 = win_col_1;
+	
+		return;
+	}
+
+	method void drawWin() {
+		do Screen.drawLine(42 + (170 * win_row_1), 21 + (170 * win_col_1), 42 + (170 * win_row_2), 63 + (170 * win_col_2)); 
+		do Screen.drawLine(21 + (170 * win_row_1), 41 + (170 * win_col_1), 63 + (170 * win_row_2), 42 + (170 * win_col_2)); 
+	
+		return;		
+	}
+
 	method void win() {
 		do checkLine(0, 1, 2, 0);
 		do checkLine(0, 3, 6, 3);
@@ -132,6 +180,11 @@ class Game {
 				do win();
 			}
 		}
+
+		// if (~(winner = 3)) {
+		// 	do getWinRowsCols();
+		// 	do drawWin();
+		// }
 
 		return;
 	}
