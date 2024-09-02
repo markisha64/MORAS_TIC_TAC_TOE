@@ -5,6 +5,7 @@ class Game {
 	field int gameDone;
 	field int winner;
 	field int played_turns;
+	field int win_state;
 	
 	constructor Game new() {
 		var int i, j;
@@ -31,7 +32,7 @@ class Game {
 		return this;
 	}
 
-	method void checkLine(int a, int b, int c) {
+	method void checkLine(int a, int b, int c, int wino) {
 		var int i;
 		var int ab, bb, cb;
 
@@ -45,6 +46,7 @@ class Game {
 			if ((ab = bb) & (bb = cb) & ~(ab = 0)) {
 				let gameDone = 1;
 				let winner = ab;
+				let win_state = wino + i;
 
 				return;
 			}
@@ -55,7 +57,7 @@ class Game {
 		return;
 	}
 
-	method void checkDiag(int a, int c) {
+	method void checkDiag(int a, int c, int wino) {
 		var int ab, bb, cb;
 
 		let ab = board[a];
@@ -65,6 +67,7 @@ class Game {
 		if ((ab = bb) & (bb = cb) & ~(ab = 0)) {
 			let gameDone = 1;
 			let winner = ab;
+			let win_state = wino;
 
 			return;
 		}
@@ -73,11 +76,11 @@ class Game {
 	}
 
 	method void win() {
-		do checkLine(0, 1, 2);
-		do checkLine(0, 3, 6);
+		do checkLine(0, 1, 2, 0);
+		do checkLine(0, 3, 6, 3);
 
-		do checkDiag(0, 8);		
-		do checkDiag(2, 6);		
+		do checkDiag(0, 8, 6);		
+		do checkDiag(2, 6, 7);		
 
 		if (played_turns = 9) {
 			let gameDone = 1;
