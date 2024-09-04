@@ -107,7 +107,7 @@ def buildPerfect():
 
 def link(files):
     with open('TTT.vm', 'w') as f:
-        f.write("sp\ncall Memory.init 0\n call Math.init 0\n call Screen.init 0\n call Main.main 0\nep\n\n")
+        f.write("sp\ncall Memory.init 0\n call Math.init 0\n call Screen.init 0\ncall Keyboard.init 0\ncall Main.main 0\nep\n\n")
         
         for file in files:
             with open(file, 'r') as rf:

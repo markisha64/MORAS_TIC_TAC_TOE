@@ -1,11 +1,6 @@
 class Main {
 	function void main() {
 		var Game game;
-	
-		do Memory.init();
-		do Math.init();
-		do Screen.init();
-		do Keyboard.init();
 
 		let game = Game.new();
 		do game.play();
